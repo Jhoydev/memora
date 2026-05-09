@@ -53,7 +53,7 @@ export function TopicCard({ topic, onEdit, onDelete }: TopicCardProps) {
         </div>
       </CardContent>
 
-      <CardFooter className="flex flex-wrap items-center gap-3 p-6 pt-0">
+      <CardFooter className="flex flex-wrap items-center gap-3 p-6 pt-4">
         <Button
           type="button"
           variant="outline"
