@@ -17,15 +17,29 @@ export class TopicService {
 
   async getTopics(): Promise<StudyTopic[]> {
     const hasTopicsStorage = this.storageClient.hasKey(STORAGE_KEYS.TOPICS);
+    const hasFlashcardsStorage = this.storageClient.hasKey(STORAGE_KEYS.FLASHCARDS);
     const topics = await this.topicRepository.findAll();
 
     if (hasTopicsStorage || topics.length > 0) {
       return topics;
     }
 
-    const seededTopics = await Promise.all(
-      initialTopicSeed.map((topic) => this.topicRepository.create(topic)),
-    );
+    const seededTopics: StudyTopic[] = [];
+
+    for (const seedEntry of initialTopicSeed) {
+      const topic = await this.topicRepository.create(seedEntry.topic);
+      seededTopics.push(topic);
+
+      if (this.flashcardRepository && !hasFlashcardsStorage) {
+        for (const flashcard of seedEntry.flashcards) {
+          await this.flashcardRepository.create({
+            topicId: topic.id,
+            front: flashcard.front,
+            back: flashcard.back,
+          });
+        }
+      }
+    }
 
     return seededTopics;
   }

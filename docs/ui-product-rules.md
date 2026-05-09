@@ -33,6 +33,8 @@
 - Una sesion se calcula en memoria para el MVP.
 - El resultado final debe distinguir sabidas y no sabidas.
 - El estudio no debe depender de formularios CRUD para funcionar.
+- El modo estudio muestra una tarjeta a la vez.
+- La respuesta debe revelarse solo tras una accion explicita del usuario.
 
 ## Reglas de UI
 
@@ -52,6 +54,27 @@
 - El formulario de topics incluye preview visual para reducir errores de eleccion de color/icono.
 - Las tarjetas de topic deben expresar personalidad visual, no solo metadata.
 - Las pantallas deben mantener una direccion luminosa y optimista por defecto.
+
+## Reglas de UI confirmadas por Topic Detail
+
+- El detalle del tema debe mantener visible el contexto del topic al gestionar flashcards.
+- Crear y editar flashcards tambien se resuelve en modal para no romper el flujo.
+- El empty state de tarjetas debe orientar a crear la primera flashcard.
+- El CTA a estudio puede mostrarse antes de que la feature exista por completo, pero debe comunicar claramente que llega en la siguiente fase.
+
+## Reglas de UI confirmadas por Study
+
+- El estudio prioriza foco y secuencia por encima de densidad.
+- La decision `sabida/no sabida` solo aparece tras revelar la respuesta.
+- El resumen final debe sentirse orientativo y motivador.
+- Si no hay tarjetas, el flujo vuelve a empujar hacia el detalle del tema.
+
+## Convenciones visuales finales del MVP
+
+- Se usa una familia de superficies claras y oscuras reutilizables para dar consistencia.
+- Las entradas de pantalla se apoyan en reveals sutiles, no en animaciones ruidosas.
+- El fondo debe sentirse vivo mediante gradientes y textura ligera, no plano.
+- La tarjeta de estudio tiene peso especial y usa flip 3D como gesto principal de interacción.
 
 ## Reglas para futuras features
 

@@ -15,7 +15,8 @@ Ser responsable de la interfaz, el sistema visual y la calidad de experiencia de
 
 - Existe una portada temporal
 - `shadcn/ui` esta inicializado
-- Aun no existe la UI real del CRUD de topics
+- La UI real de topics, detalle y estudio ya existe
+- El sistema visual compartido del MVP ya esta documentado en `docs/visual-system.md`
 
 ## Principios de UI
 
@@ -51,6 +52,7 @@ Ser responsable de la interfaz, el sistema visual y la calidad de experiencia de
 - Patrones de modales y confirmaciones
 - Criterios responsive
 - Motivo de decisiones visuales principales
+- Cambios en superficies compartidas, motion o convenciones globales
 
 ## Checklist mental antes de cerrar trabajo
 

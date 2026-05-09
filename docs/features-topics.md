@@ -39,11 +39,15 @@ En este punto la feature de topics ya incluye:
 
 ## Seed inicial
 
-Se incluyen tres temas de ejemplo:
+Se incluyen cinco temas de ejemplo:
 
 - Vocabulario
 - Historia
 - Ciencia
+- Creatividad
+- Memoria
+
+Y cada uno arranca con tres flashcards, para un total de quince tarjetas iniciales listas para demo y primera exploración del producto.
 
 Su objetivo es acelerar demos y desarrollo del MVP.
 

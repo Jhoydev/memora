@@ -259,3 +259,205 @@
   - Implementar la pantalla de detalle de topic y el CRUD visual de flashcards
 - Recomendacion para la siguiente fase:
   - Reutilizar el patron de la Home de topics para construir `/topics/[topicId]` con modales de crear, editar y borrar flashcards
+
+## Fase 6. UI de detalle de tema y CRUD de flashcards
+
+- Fecha de cierre: `2026-05-09`
+- Objetivo de la fase: convertir la feature de flashcards en una experiencia navegable y operable desde el detalle de un tema concreto.
+- Feature entregada:
+  - Pantalla `/topics/[topicId]` con colección visual de flashcards, CRUD en modales y CTA hacia estudio
+- Entregables completados:
+  - `FlashcardForm`, `FlashcardPreview` y `FlashcardGrid` implementados
+  - `TopicDetailScreen` implementado
+  - Ruta `src/app/topics/[topicId]/page.tsx` creada
+  - Navegación desde tarjetas de topic de Home hacia detalle activada
+  - Estado de tema inexistente, colección vacía, carga y errores resueltos
+  - Documentación específica de la pantalla de detalle creada
+- Decisiones tecnicas:
+  - El detalle es un client component dedicado que orquesta `useTopicQuery`, `useFlashcardsByTopicQuery` y mutations
+  - El formulario de flashcards usa `react-hook-form` con `zodResolver` y recibe `onSubmit` externo
+  - El CTA hacia estudio se muestra ya en el detalle, pero deshabilitado y rotulado como siguiente fase
+  - Se reutilizan componentes compartidos existentes para mantener consistencia entre Home y detalle
+- Reglas de negocio y producto:
+  - El detalle siempre trabaja sobre un solo `topicId`
+  - Las flashcards mostradas pertenecen solo al tema actual
+  - Si el tema no existe, el flujo debe detenerse con un estado explicativo y retorno a Home
+  - La pantalla debe preparar el paso natural de organizar tarjetas antes de estudiar
+- Reglas de UI/UX confirmadas:
+  - El contexto visual del topic se mantiene visible en el encabezado y bloques de resumen
+  - Crear y editar flashcards se resuelve en modal para no romper el flujo
+  - El empty state de la colección empuja a crear la primera tarjeta
+  - La experiencia mantiene la dirección luminosa y de producto ya establecida en Home
+- Archivos o modulos principales afectados:
+  - `src/app/topics/[topicId]/page.tsx`
+  - `src/features/flashcards/components/TopicDetailScreen.tsx`
+  - `src/features/flashcards/components/FlashcardForm.tsx`
+  - `src/features/flashcards/components/FlashcardPreview.tsx`
+  - `src/features/flashcards/components/FlashcardGrid.tsx`
+  - `src/features/topics/components/TopicCard.tsx`
+  - `docs/features-flashcards.md`
+  - `docs/screen-topic-detail.md`
+  - `docs/ui-product-rules.md`
+- Validaciones realizadas:
+  - `npm run lint` ejecutado correctamente
+  - `npm run build` ejecutado correctamente
+  - Verificación de la ruta dinámica `/topics/[topicId]`
+- Problemas encontrados:
+  - La implementación actual de `Button` no soporta `asChild`; se sustituyeron esos puntos por `Link` estilizado con `buttonVariants`
+- Deuda tecnica o pendientes:
+  - Implementar la ruta y flujo real de estudio
+- Recomendacion para la siguiente fase:
+  - Construir `/topics/[topicId]/study` reutilizando el mismo contexto de tema y las flashcards ya disponibles por `topicId`
+
+## Fase 7. Modo estudio
+
+- Fecha de cierre: `2026-05-09`
+- Objetivo de la fase: cerrar el flujo principal del MVP permitiendo estudiar las flashcards de un tema en una sesión ligera y enfocada.
+- Feature entregada:
+  - Modo estudio funcional con reveal de respuesta, marcado sabida/no sabida y resumen final
+- Entregables completados:
+  - `StudyService` implementado
+  - `useStudySession` implementado
+  - `StudyProgress`, `StudyCard`, `StudySummary` y `StudyScreen` implementados
+  - Ruta `src/app/topics/[topicId]/study/page.tsx` creada
+  - CTA desde detalle de tema conectada al estudio cuando hay tarjetas disponibles
+  - Documentación específica de la feature y de la pantalla de estudio creada
+- Decisiones tecnicas:
+  - El estudio se mantiene en memoria y no persiste histórico
+  - La lógica de sesión se encapsula en un hook dedicado y un servicio puro de apoyo
+  - El resumen final se deriva del estado de respuestas, no de almacenamiento externo
+  - El flujo se reinicia localmente con `restartSession`
+- Reglas de negocio y producto:
+  - Solo se estudia un tema a la vez
+  - Cada tarjeta se marca como `known` o `unknown`
+  - La respuesta se revela solo después de una acción explícita
+  - Si no hay tarjetas, el flujo vuelve a empujar hacia el detalle del tema
+  - El resumen final debe orientar el siguiente repaso y no funcionar como nota punitiva
+- Reglas de UI/UX confirmadas:
+  - Se muestra una tarjeta por vez
+  - La decisión de resultado aparece solo tras revelar la respuesta
+  - El progreso visible reduce sensación de pérdida dentro de la sesión
+  - La experiencia mantiene continuidad visual con Home y Topic Detail, pero con foco más concentrado
+- Archivos o modulos principales afectados:
+  - `src/app/topics/[topicId]/study/page.tsx`
+  - `src/features/study/domain/study.types.ts`
+  - `src/features/study/services/study.service.ts`
+  - `src/features/study/hooks/use-study-session.ts`
+  - `src/features/study/components/StudyProgress.tsx`
+  - `src/features/study/components/StudyCard.tsx`
+  - `src/features/study/components/StudySummary.tsx`
+  - `src/features/study/components/StudyScreen.tsx`
+  - `src/features/flashcards/components/TopicDetailScreen.tsx`
+  - `docs/features-study.md`
+  - `docs/screen-study.md`
+- Validaciones realizadas:
+  - `npm run lint` ejecutado correctamente
+  - `npm run build` ejecutado correctamente
+  - Verificación de la ruta dinámica `/topics/[topicId]/study`
+- Problemas encontrados:
+  - `eslint` marcó un reinicio de estado dentro de un `effect`; se simplificó el hook para inicializar la sesión sin ese patrón
+- Deuda tecnica o pendientes:
+  - Pulir motion, responsive fino y microinteracciones globales del MVP
+- Recomendacion para la siguiente fase:
+  - Enfocar la Fase 8 en polish visual transversal, consistencia final y experiencia de demo
+
+## Fase 8. Pulido visual y UX
+
+- Fecha de cierre: `2026-05-09`
+- Objetivo de la fase: consolidar una identidad visual consistente, mejorar motion y dejar el MVP con una experiencia de demo realmente pulida.
+- Feature entregada:
+  - Sistema visual transversal del MVP con reveals consistentes, superficies reutilizables y flip 3D en estudio
+- Entregables completados:
+  - Utilidades visuales globales añadidas en `src/app/globals.css`
+  - Componente compartido `Reveal` implementado
+  - Home, Topic Detail y Study alineados con motion y composición consistente
+  - Flip 3D de la tarjeta de estudio implementado con `Framer Motion`
+  - Documento `docs/visual-system.md` creado
+- Decisiones tecnicas:
+  - El sistema visual se formaliza con clases utilitarias `memora-*` en vez de duplicar estilos de pantalla en pantalla
+  - `Reveal` concentra la animación de entrada para evitar variaciones arbitrarias entre vistas
+  - El flip 3D se limita al modo estudio, donde sí aporta significado al flujo
+- Reglas de negocio y producto:
+  - El polish debe mejorar comprensión y foco, no solo “verse bonito”
+  - La experiencia de demo debe sentirse coherente de Home a Study sin romper identidad
+  - El gesto de revelar respuesta debe sentirse intencional y alineado con la recuperación activa
+- Reglas de UI/UX confirmadas:
+  - Los fondos ya no son planos: usan gradiente y retícula suave como atmósfera común
+  - Las superficies claras y oscuras se reutilizan con roles definidos
+  - Las entradas animadas deben ser sutiles y consistentes
+  - La tarjeta de estudio merece el gesto de flip; otros flujos no necesitan sobreanimación
+- Archivos o modulos principales afectados:
+  - `src/app/globals.css`
+  - `src/components/shared/Reveal.tsx`
+  - `src/features/topics/components/TopicsHomeScreen.tsx`
+  - `src/features/flashcards/components/TopicDetailScreen.tsx`
+  - `src/features/study/components/StudyCard.tsx`
+  - `src/features/study/components/StudyScreen.tsx`
+  - `docs/visual-system.md`
+  - `docs/ui-product-rules.md`
+  - `.agents/ui-agent.md`
+- Validaciones realizadas:
+  - `npm run lint` ejecutado correctamente
+  - `npm run build` ejecutado correctamente
+  - Verificación de rutas Home, Topic Detail y Study tras el polish
+- Problemas encontrados:
+  - Ningun bloqueo funcional en esta fase
+- Deuda tecnica o pendientes:
+  - Cerrar testing del MVP para proteger los flujos críticos
+- Recomendacion para la siguiente fase:
+  - Enfocar la Fase 9 en tests de storage, servicios, hooks, formularios y flujo de estudio
+
+## Fase 9. Testing
+
+- Fecha de cierre: `2026-05-09`
+- Objetivo de la fase: validar de forma automatizada las capas críticas del MVP sin convertir el proyecto en una suite pesada de mantener.
+- Feature entregada:
+  - Infraestructura de testing ligera y suite base para storage, repositorios, servicios, hooks, formulario y smoke del flujo principal
+- Entregables completados:
+  - `Vitest` configurado
+  - `Testing Library` y `jsdom` configurados
+  - `LocalStorageClient` cubierto
+  - repositorios locales de topics y flashcards cubiertos
+  - servicios de topics, flashcards y study cubiertos
+  - hook `useStudySession` cubierto
+  - mutation `useCreateTopicMutation` cubierta
+  - `TopicForm` cubierto
+  - smoke test de flujo principal añadido
+  - guía de testing creada
+- Decisiones tecnicas:
+  - La suite usa `Vitest` por ligereza y velocidad
+  - Se priorizó cobertura de lógica y flujos críticos antes que snapshots o E2E pesados
+  - Se añadió `query-test-utils` para probar hooks de React Query sin duplicar setup
+- Reglas de negocio y producto cubiertas por tests:
+  - storage seguro con fallbacks y errores controlados
+  - creación, actualización y borrado local de topics y flashcards
+  - validaciones de actualización vacía
+  - prohibición de crear flashcards para temas inexistentes
+  - conteo final de resultados de estudio
+  - envío correcto del formulario principal de topics
+- Archivos o modulos principales afectados:
+  - `vitest.config.ts`
+  - `src/test/setup.ts`
+  - `src/test/query-test-utils.tsx`
+  - `src/lib/storage/local-storage.client.test.ts`
+  - `src/features/topics/repositories/local-storage-topic.repository.test.ts`
+  - `src/features/flashcards/repositories/local-storage-flashcard.repository.test.ts`
+  - `src/features/topics/services/topic.service.test.ts`
+  - `src/features/flashcards/services/flashcard.service.test.ts`
+  - `src/features/study/services/study.service.test.ts`
+  - `src/features/study/hooks/use-study-session.test.tsx`
+  - `src/features/topics/queries/use-create-topic-mutation.test.tsx`
+  - `src/features/topics/components/TopicForm.test.tsx`
+  - `src/app/app-flow.smoke.test.tsx`
+  - `docs/testing-guide.md`
+- Validaciones realizadas:
+  - `npm test` ejecutado correctamente con `10` archivos y `23` tests verdes
+  - `npm run lint` ejecutado correctamente
+  - `npm run build` ejecutado correctamente
+- Problemas encontrados:
+  - Un test de repositorio dependía de timestamps en el mismo milisegundo; se volvió más robusto eliminando esa suposición
+- Deuda tecnica o pendientes:
+  - No hay E2E completos ni pruebas visuales
+  - La cobertura de formularios y mutations de flashcards puede ampliarse si el producto crece
+- Recomendacion para la siguiente fase:
+  - El plan MVP queda cerrado; a partir de aquí conviene decidir entre backend real, E2E o mejoras de producto

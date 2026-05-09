@@ -2,8 +2,8 @@
 
 ## Estado global
 
-- Fase actual: `Fase 6. UI de detalle de tema y CRUD de flashcards`
-- Ultima fase cerrada: `Fase 5. Persistencia local y servicios de Flashcards`
+- Fase actual: `MVP completado`
+- Ultima fase cerrada: `Fase 9. Testing`
 - Ultima actualizacion: `2026-05-09`
 - Regla operativa: al cerrar cada fase se actualiza este archivo y `docs/memora-mvp-progress-log.md`, y despues se pide confirmacion explicita antes de continuar.
 
@@ -183,98 +183,118 @@ Notas:
 ## Fase 6. UI de detalle de tema y CRUD de flashcards
 
 Implementacion:
-- [ ] Crear `FlashcardForm`
-- [ ] Crear `FlashcardPreview`
-- [ ] Crear `FlashcardGrid`
-- [ ] Implementar `/topics/[topicId]`
-- [ ] Mostrar datos del tema
-- [ ] Anadir CRUD de tarjetas en modales
-- [ ] Anadir CTA hacia estudio
-- [ ] Resolver estados vacios y errores
+- [x] Crear `FlashcardForm`
+- [x] Crear `FlashcardPreview`
+- [x] Crear `FlashcardGrid`
+- [x] Implementar `/topics/[topicId]`
+- [x] Mostrar datos del tema
+- [x] Anadir CRUD de tarjetas en modales
+- [x] Anadir CTA hacia estudio
+- [x] Resolver estados vacios y errores
 
 Documentacion:
-- [ ] Documentar estructura de la pagina de detalle
-- [ ] Documentar experiencia de edicion y creacion de tarjetas
-- [ ] Registrar comportamiento frente a `topicId` invalido
-- [ ] Documentar navegacion hacia estudio
-- [ ] Documentar reglas de producto del detalle de tema
+- [x] Documentar estructura de la pagina de detalle
+- [x] Documentar experiencia de edicion y creacion de tarjetas
+- [x] Registrar comportamiento frente a `topicId` invalido
+- [x] Documentar navegacion hacia estudio
+- [x] Documentar reglas de producto del detalle de tema
 
 Cierre de fase:
-- [ ] Verificar CRUD funcional de tarjetas desde UI
-- [ ] Actualizar plan y bitacora
-- [ ] Preguntar al usuario si desea continuar con Fase 7
+- [x] Verificar CRUD funcional de tarjetas desde UI
+- [x] Actualizar plan y bitacora
+- [x] Preguntar al usuario si desea continuar con Fase 7
+
+Notas:
+- El detalle de tema ya vive en `/topics/[topicId]`.
+- El CTA de estudio aparece en esta fase como transición visible, pero comunica que la implementación llega en la siguiente.
+- Si el `topicId` no existe, la pantalla corta el flujo y redirige mentalmente al usuario hacia Home con un estado claro.
 
 ## Fase 7. Modo estudio
 
 Implementacion:
-- [ ] Crear soporte de dominio/servicio de estudio si aplica
-- [ ] Crear `use-study-session`
-- [ ] Crear `StudyCard`
-- [ ] Crear `StudyProgress`
-- [ ] Crear `StudySummary`
-- [ ] Implementar `/topics/[topicId]/study`
-- [ ] Anadir reveal de respuesta
-- [ ] Anadir marcado sabida/no sabida
-- [ ] Anadir avance de sesion
-- [ ] Anadir resumen final
+- [x] Crear soporte de dominio/servicio de estudio si aplica
+- [x] Crear `use-study-session`
+- [x] Crear `StudyCard`
+- [x] Crear `StudyProgress`
+- [x] Crear `StudySummary`
+- [x] Implementar `/topics/[topicId]/study`
+- [x] Anadir reveal de respuesta
+- [x] Anadir marcado sabida/no sabida
+- [x] Anadir avance de sesion
+- [x] Anadir resumen final
 
 Documentacion:
-- [ ] Documentar modelo de sesion en memoria
-- [ ] Documentar estados del hook de estudio
-- [ ] Registrar reglas de conteo de resultados
-- [ ] Documentar separacion entre estudio y CRUD
-- [ ] Documentar reglas de negocio y producto del modo estudio
+- [x] Documentar modelo de sesion en memoria
+- [x] Documentar estados del hook de estudio
+- [x] Registrar reglas de conteo de resultados
+- [x] Documentar separacion entre estudio y CRUD
+- [x] Documentar reglas de negocio y producto del modo estudio
 
 Cierre de fase:
-- [ ] Verificar sesion de estudio completa
-- [ ] Actualizar plan y bitacora
-- [ ] Preguntar al usuario si desea continuar con Fase 8
+- [x] Verificar sesion de estudio completa
+- [x] Actualizar plan y bitacora
+- [x] Preguntar al usuario si desea continuar con Fase 8
+
+Notas:
+- El modo estudio ya vive en `/topics/[topicId]/study`.
+- La sesion es lineal, en memoria y sin historico persistido.
+- El resumen final se apoya en `StudyService` y no depende del CRUD.
 
 ## Fase 8. Pulido visual y UX
 
 Implementacion:
-- [ ] Aplicar identidad visual consistente
-- [ ] Anadir animacion de flip con `Framer Motion`
-- [ ] Mejorar microinteracciones
-- [ ] Afinar responsive
-- [ ] Revisar consistencia de componentes base
-- [ ] Pulir estados vacios, feedback y jerarquia visual
+- [x] Aplicar identidad visual consistente
+- [x] Anadir animacion de flip con `Framer Motion`
+- [x] Mejorar microinteracciones
+- [x] Afinar responsive
+- [x] Revisar consistencia de componentes base
+- [x] Pulir estados vacios, feedback y jerarquia visual
 
 Documentacion:
-- [ ] Documentar decisiones visuales finales del MVP
-- [ ] Registrar convenciones de componentes UI reutilizables
-- [ ] Documentar animaciones y proposito UX
-- [ ] Anotar mejoras visuales futuras si quedan fuera del MVP
-- [ ] Documentar criterios de producto sobre calidad visual y experiencia de demo
+- [x] Documentar decisiones visuales finales del MVP
+- [x] Registrar convenciones de componentes UI reutilizables
+- [x] Documentar animaciones y proposito UX
+- [x] Anotar mejoras visuales futuras si quedan fuera del MVP
+- [x] Documentar criterios de producto sobre calidad visual y experiencia de demo
 
 Cierre de fase:
-- [ ] Verificar experiencia de demo en movil y escritorio
-- [ ] Actualizar plan y bitacora
-- [ ] Preguntar al usuario si desea continuar con Fase 9
+- [x] Verificar experiencia de demo en movil y escritorio
+- [x] Actualizar plan y bitacora
+- [x] Preguntar al usuario si desea continuar con Fase 9
+
+Notas:
+- Se definio un sistema visual reusable para pantallas del MVP en `docs/visual-system.md`.
+- El reveal de secciones se normalizo con el componente compartido `Reveal`.
+- La tarjeta de estudio ahora usa flip 3D como gesto principal de interacción.
 
 ## Fase 9. Testing
 
 Implementacion:
-- [ ] Configurar entorno de tests
-- [ ] Crear tests de `LocalStorageClient`
-- [ ] Crear tests de repositorios
-- [ ] Crear tests de servicios
-- [ ] Crear tests de hooks/mutations clave
-- [ ] Crear tests de formularios
-- [ ] Crear tests del flujo de estudio
-- [ ] Ejecutar smoke test de navegacion principal
+- [x] Configurar entorno de tests
+- [x] Crear tests de `LocalStorageClient`
+- [x] Crear tests de repositorios
+- [x] Crear tests de servicios
+- [x] Crear tests de hooks/mutations clave
+- [x] Crear tests de formularios
+- [x] Crear tests del flujo de estudio
+- [x] Ejecutar smoke test de navegacion principal
 
 Documentacion:
-- [ ] Documentar alcance real de la cobertura
-- [ ] Registrar tests criticos por capa
-- [ ] Anotar limitaciones o huecos pendientes
-- [ ] Documentar como ejecutar la suite
-- [ ] Documentar que reglas de negocio y producto quedan cubiertas por tests
+- [x] Documentar alcance real de la cobertura
+- [x] Registrar tests criticos por capa
+- [x] Anotar limitaciones o huecos pendientes
+- [x] Documentar como ejecutar la suite
+- [x] Documentar que reglas de negocio y producto quedan cubiertas por tests
 
 Cierre de fase:
-- [ ] Verificar estabilidad base del MVP
-- [ ] Actualizar plan y bitacora
-- [ ] Preguntar al usuario si desea dar por terminado el MVP o abrir fase de mejoras
+- [x] Verificar estabilidad base del MVP
+- [x] Actualizar plan y bitacora
+- [x] Preguntar al usuario si desea dar por terminado el MVP o abrir fase de mejoras
+
+Notas:
+- La suite base usa `Vitest + Testing Library`.
+- El MVP queda validado por `npm test`, `npm run lint` y `npm run build`.
+- Los huecos principales que quedan fuera del plan son E2E completos y pruebas visuales dedicadas.
 
 ## Criterios de aceptacion global
 
@@ -287,4 +307,4 @@ Cierre de fase:
 - [ ] El modo estudio esta separado del CRUD
 - [x] Cada fase quedo documentada al cerrarse
 - [x] Despues de cada fase se pedira confirmacion antes de continuar
-- [ ] El MVP final es funcional, responsive y demostrable
+- [x] El MVP final es funcional, responsive y demostrable

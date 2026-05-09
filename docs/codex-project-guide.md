@@ -18,6 +18,8 @@ Este documento resume la estructura del proyecto, las reglas arquitectonicas y l
   - Utilidades compartidas y detalles de infraestructura ligera
 - `docs/`
   - Plan por fases, bitacora de avance y guias operativas del proyecto
+  - `visual-system.md` para decisiones de polish y convenciones visuales
+  - `testing-guide.md` para alcance y comandos de pruebas
 
 ## Regla de arquitectura
 
@@ -39,9 +41,9 @@ Reglas:
 - Topics:
   - Repositorio local, servicio, factory, query keys, hooks de datos, semilla inicial y Home CRUD implementados.
 - Flashcards:
-  - Dominio, repositorio local, servicio, factory, query keys y hooks por `topicId` implementados.
+  - Dominio, repositorio local, servicio, factory, query keys, hooks por `topicId` y UI del detalle de tema implementados.
 - Study:
-  - Solo tipo de resultado por ahora.
+  - Servicio puro, hook de sesión y UI de estudio implementados.
 
 ## Convenciones de implementacion
 
@@ -64,8 +66,10 @@ Reglas:
   - reglas de negocio
   - reglas de producto
   - decisiones de UI/UX
+- Si una fase redefine estilos reutilizables o motion transversal, actualizar tambien `docs/visual-system.md`.
 - No saltar directamente a componentes si la capa de datos de esa feature no esta cerrada.
 - Mantener nombres de archivos alineados con el plan tecnico original salvo que haya una razon fuerte para desviarse.
+- Cuando se cambie una regla de negocio en una capa ya testeada, revisar si la prueba correspondiente debe cambiar en el mismo turno.
 
 ## Mapa de agentes
 
@@ -80,4 +84,7 @@ Reglas:
 
 ## Pendiente inmediato
 
-La siguiente fase tras la persistencia de flashcards es la UI del detalle de tema y el CRUD visual de tarjetas, reutilizando el patron de la Home de topics.
+El MVP ya tiene flujo funcional y suite base de validacion. El siguiente paso natural fuera del plan actual es decidir si se quiere:
+- endurecer testing con E2E
+- preparar backend real
+- o entrar en fase de mejoras de producto

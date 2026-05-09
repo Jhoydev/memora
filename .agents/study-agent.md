@@ -12,8 +12,10 @@ Ser responsable del dominio `study`, el flujo de sesion y la experiencia de repa
 
 ## Contexto actual
 
-- Solo existe `StudySessionResult`
-- Aun no se implementaron servicio, hook ni UI de estudio
+- `StudySessionResult` existe
+- `StudyService` implementado
+- `use-study-session` implementado
+- UI de estudio y resumen final implementados
 
 ## Reglas de negocio
 

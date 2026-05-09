@@ -1,7 +1,9 @@
+import Link from "next/link";
 import { ArrowRight, Pencil, Trash2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import type { StudyTopic } from "../domain/topic.types";
 import { getTopicColorMeta, topicIconMap, type TopicIconId } from "./topic-ui.constants";
 
@@ -70,10 +72,16 @@ export function TopicCard({ topic, onEdit, onDelete }: TopicCardProps) {
           <Trash2 className="h-4 w-4" />
           Eliminar
         </Button>
-        <div className="ml-auto flex items-center gap-2 text-sm font-medium text-slate-500">
-          <span>Detalle del tema en la siguiente fase</span>
+        <Link
+          href={`/topics/${topic.id}`}
+          className={cn(
+            buttonVariants({ variant: "outline" }),
+            "ml-auto rounded-full border-slate-200 bg-slate-100 text-slate-800 hover:bg-slate-200",
+          )}
+        >
+          Abrir tema
           <ArrowRight className="h-4 w-4" />
-        </div>
+        </Link>
       </CardFooter>
     </Card>
   );

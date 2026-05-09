@@ -6,7 +6,7 @@ La feature de flashcards permite guardar tarjetas mnemotecnicas asociadas a un t
 
 ## Alcance actual
 
-En esta fase queda implementada la capa de datos de flashcards:
+En este punto la feature de flashcards ya incluye:
 
 - repositorio local con `localStorage`
 - servicio de aplicacion
@@ -14,8 +14,11 @@ En esta fase queda implementada la capa de datos de flashcards:
 - query keys
 - hooks de lectura y mutacion por `topicId`
 - borrado en cascada por tema
-
-La UI del detalle de tema y del CRUD de flashcards se implementara en la fase siguiente.
+- pantalla de detalle de tema
+- formulario de crear y editar flashcards
+- grid visual de tarjetas
+- confirmacion de borrado
+- CTA hacia estudio como siguiente transicion del flujo
 
 ## Reglas de negocio
 
@@ -31,6 +34,9 @@ La UI del detalle de tema y del CRUD de flashcards se implementara en la fase si
 - Las flashcards no existen de forma aislada; siempre viven dentro de un tema.
 - La coleccion de flashcards debe poder consultarse por tema sin mezclar tarjetas de otros contextos.
 - El borrado de un topic debe poder limpiar sus tarjetas asociadas sin depender de la UI.
+- El detalle de tema debe servir de puente entre organizacion y estudio.
+- Si el tema no existe, la pantalla debe cortar el flujo y ofrecer retorno claro a Home.
+- El primer arranque del MVP ya debe traer quince flashcards de ejemplo distribuidas entre cinco temas.
 
 ## Contratos expuestos
 
@@ -41,3 +47,10 @@ La UI del detalle de tema y del CRUD de flashcards se implementara en la fase si
 - `useDeleteFlashcardMutation`
 
 Estos contratos seran la unica puerta de entrada de la UI para datos persistentes de flashcards.
+
+## Componentes de UI actuales
+
+- `TopicDetailScreen`
+- `FlashcardForm`
+- `FlashcardGrid`
+- `FlashcardPreview`

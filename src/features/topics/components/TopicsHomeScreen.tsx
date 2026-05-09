@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { ConfirmDialog } from "@/components/shared/ConfirmDialog";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { PageHeader } from "@/components/shared/PageHeader";
+import { Reveal } from "@/components/shared/Reveal";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -99,55 +100,64 @@ export function TopicsHomeScreen() {
     createTopicMutation.isPending || updateTopicMutation.isPending || deleteTopicMutation.isPending;
 
   return (
-    <main className="relative flex flex-1 overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(224,242,254,0.9),_rgba(255,255,255,0.98)_44%,_#fff_78%)]">
+    <main className="memora-page-shell memora-mesh bg-[radial-gradient(circle_at_top,_rgba(224,242,254,0.9),_rgba(255,255,255,0.98)_44%,_#fff_78%)]">
       <div className="absolute inset-x-0 top-0 h-72 bg-[linear-gradient(120deg,rgba(14,165,233,0.18),rgba(251,191,36,0.10),rgba(236,72,153,0.12))]" />
-      <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col gap-10 px-6 py-10 sm:px-10 lg:px-12">
-        <PageHeader
-          eyebrow="Memora · Topics"
-          title="Tus temas de estudio, listos para convertirse en memoria visual."
-          description="Crea temas claros, dales una identidad visual y prepara la base para añadir tarjetas y estudiar sin perder el foco."
-          actions={
-            <Button
-              type="button"
-              onClick={openCreateDialog}
-              className="h-12 rounded-full bg-slate-950 px-6 text-white hover:bg-slate-800"
-            >
-              <BookPlus className="h-4 w-4" />
-              Nuevo tema
-            </Button>
-          }
-        />
+      <div className="memora-page-content">
+        <Reveal delay={0.02}>
+          <PageHeader
+            eyebrow="Memora · Topics"
+            title="Tus temas de estudio, listos para convertirse en memoria visual."
+            description="Crea temas claros, dales una identidad visual y prepara la base para añadir tarjetas y estudiar sin perder el foco."
+            actions={
+              <Button
+                type="button"
+                onClick={openCreateDialog}
+                className="h-12 rounded-full bg-slate-950 px-6 text-white hover:bg-slate-800"
+              >
+                <BookPlus className="h-4 w-4" />
+                Nuevo tema
+              </Button>
+            }
+          />
+        </Reveal>
 
         {mutationErrorMessage ? (
-          <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
+          <Reveal delay={0.08} className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
             {mutationErrorMessage}
-          </div>
+          </Reveal>
         ) : null}
 
         {topicsQuery.isLoading ? (
-          <div className="flex min-h-[320px] items-center justify-center rounded-[2rem] border border-slate-200/70 bg-white/85 shadow-[0_24px_80px_-44px_rgba(15,23,42,0.35)] backdrop-blur">
+          <Reveal
+            delay={0.1}
+            className="flex min-h-[320px] items-center justify-center rounded-[2rem] border border-slate-200/70 bg-white/85 shadow-[0_24px_80px_-44px_rgba(15,23,42,0.35)] backdrop-blur"
+          >
             <div className="flex items-center gap-3 text-slate-600">
               <LoaderCircle className="h-5 w-5 animate-spin" />
               Cargando temas de estudio...
             </div>
-          </div>
+          </Reveal>
         ) : topics.length === 0 ? (
-          <EmptyState
-            icon={<Sparkles className="h-7 w-7" />}
-            title="Tu biblioteca está vacía por ahora"
-            description="Crea tu primer tema para organizar tarjetas y preparar una sesión de estudio enfocada. Aquí comenzará el recorrido completo de Memora."
-            action={
-              <Button
-                type="button"
-                onClick={openCreateDialog}
-                className="rounded-full bg-slate-950 px-6 text-white hover:bg-slate-800"
-              >
-                Crear primer tema
-              </Button>
-            }
-          />
+          <Reveal delay={0.1}>
+            <EmptyState
+              icon={<Sparkles className="h-7 w-7" />}
+              title="Tu biblioteca está vacía por ahora"
+              description="Crea tu primer tema para organizar tarjetas y preparar una sesión de estudio enfocada. Aquí comenzará el recorrido completo de Memora."
+              action={
+                <Button
+                  type="button"
+                  onClick={openCreateDialog}
+                  className="rounded-full bg-slate-950 px-6 text-white hover:bg-slate-800"
+                >
+                  Crear primer tema
+                </Button>
+              }
+            />
+          </Reveal>
         ) : (
-          <TopicGrid topics={topics} onEdit={openEditDialog} onDelete={setTopicToDelete} />
+          <Reveal delay={0.1}>
+            <TopicGrid topics={topics} onEdit={openEditDialog} onDelete={setTopicToDelete} />
+          </Reveal>
         )}
       </div>
 
