@@ -46,4 +46,19 @@ export class LocalStorageClient {
       );
     }
   }
+
+  hasKey(key: string): boolean {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    try {
+      return window.localStorage.getItem(key) !== null;
+    } catch {
+      throw new AppError(
+        `No se pudo comprobar la clave "${key}" en localStorage.`,
+        APP_ERROR_CODES.STORAGE_READ_ERROR,
+      );
+    }
+  }
 }

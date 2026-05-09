@@ -96,3 +96,166 @@
   - Implementar repositorios concretos de topics en la siguiente fase
 - Recomendacion para la siguiente fase:
   - Avanzar con `LocalStorageTopicRepository`, `TopicService`, query keys y hooks de topics para cerrar la primera feature persistente
+
+## Fase 3. Persistencia local y servicios de Topics
+
+- Fecha de cierre: `2026-05-09`
+- Objetivo de la fase: implementar la primera feature persistente del MVP respetando la arquitectura desacoplada y dejando lista la API de datos que consumira la UI.
+- Feature entregada:
+  - Capa completa de datos de topics con `localStorage`, servicio, seed inicial y hooks de `TanStack Query`
+- Entregables completados:
+  - `LocalStorageTopicRepository` implementado
+  - `TopicService` implementado con validacion, semilla inicial y reglas base
+  - `topicService` factory creada
+  - `topicQueryKeys` creadas
+  - Hooks `useTopicsQuery`, `useTopicQuery`, `useCreateTopicMutation`, `useUpdateTopicMutation` y `useDeleteTopicMutation` creados
+  - Seed inicial de topics documentada e implementada
+  - Documentacion operativa adicional creada para Codex y para reglas de UI/producto
+- Decisiones tecnicas:
+  - El repositorio local se apoya en `LocalStorageClient` y `STORAGE_KEYS.TOPICS`
+  - La semilla se aplica desde el servicio, no desde la UI, para preservar el contrato futuro
+  - La comprobacion de “primer arranque” usa existencia real de la clave en storage, no solo longitud del array
+  - Las invalidaciones de cache se concentran en los hooks de mutation
+- Reglas de negocio y producto:
+  - Un tema invalido no puede crearse ni actualizarse
+  - Actualizar un tema exige al menos un cambio efectivo
+  - El primer arranque debe mostrar temas semilla para acelerar onboarding y demo
+  - Borrar todos los temas no debe reinyectar la semilla automaticamente
+  - La UI debe consumir solo hooks de query/mutation y nunca el servicio o storage de forma directa
+- Reglas de UI/UX confirmadas:
+  - La futura Home debe mostrar estados vacios solo cuando realmente no existan temas y ya no aplique la semilla
+  - Las acciones de crear, editar y borrar se apoyaran en feedback de mutation y refresco por invalidacion de cache
+  - La experiencia de producto debe mantener claridad entre “datos reales del usuario” y “semilla inicial”
+- Archivos o modulos principales afectados:
+  - `src/features/topics/repositories/local-storage-topic.repository.ts`
+  - `src/features/topics/services/topic.service.ts`
+  - `src/features/topics/services/topic-service.factory.ts`
+  - `src/features/topics/services/topic.seed.ts`
+  - `src/features/topics/queries/topic.query-keys.ts`
+  - `src/features/topics/queries/use-topics-query.ts`
+  - `src/features/topics/queries/use-topic-query.ts`
+  - `src/features/topics/queries/use-create-topic-mutation.ts`
+  - `src/features/topics/queries/use-update-topic-mutation.ts`
+  - `src/features/topics/queries/use-delete-topic-mutation.ts`
+  - `docs/codex-project-guide.md`
+  - `docs/ui-product-rules.md`
+  - `docs/features-topics.md`
+- Validaciones realizadas:
+  - Revision de coherencia del flujo `query -> service -> repository`
+  - Verificacion de reglas de seed inicial y no-reaparicion tras vaciado manual
+  - `npm run lint` ejecutado correctamente
+  - `npm run build` ejecutado correctamente
+- Problemas encontrados:
+  - Ningun bloqueo funcional en esta fase
+- Deuda tecnica o pendientes:
+  - Construir la UI de topics y Home en la siguiente fase
+- Recomendacion para la siguiente fase:
+  - Crear componentes compartidos y de topics reutilizando los hooks ya expuestos y apoyandose en la documentacion de reglas de UI
+
+## Fase 4. UI de Topics y Home
+
+- Fecha de cierre: `2026-05-09`
+- Objetivo de la fase: convertir la feature de topics en la primera experiencia completa del producto, con CRUD visual y una home lista para demo.
+- Feature entregada:
+  - Home funcional de Memora con listado de topics, creacion, edicion, borrado y estados vacios
+- Entregables completados:
+  - `PageHeader`, `EmptyState` y `ConfirmDialog` creados como componentes compartidos
+  - `TopicForm`, `TopicCard`, `TopicGrid` y `TopicsHomeScreen` implementados
+  - Home `/` conectada a hooks reales de topics
+  - Modales de crear y editar implementados con `Dialog`
+  - Confirmacion de borrado implementada con `AlertDialog`
+  - Documentacion especifica de la pantalla Home creada
+- Decisiones tecnicas:
+  - Se reutilizo `shadcn/ui` como base para `Dialog`, `AlertDialog`, `Card`, `Input`, `Label` y `Badge`
+  - El formulario usa `react-hook-form` + `zodResolver` y recibe `onSubmit` externo
+  - La vista previa visual del topic vive en el formulario y no requiere persistencia
+  - La home es un client component dedicado que orquesta queries, mutations y estado de modales
+- Reglas de negocio y producto:
+  - La home trata los topics como puerta de entrada al producto
+  - Crear y editar se hacen en modal para mantener el contexto
+  - El borrado siempre pide confirmacion
+  - Si el usuario vacia su biblioteca, debe ver un empty state claro y accionable
+  - La UI no debe hacer parecer que flashcards o estudio ya estan implementados en esta fase
+- Reglas de UI/UX confirmadas:
+  - Existe un CTA primario unico: `Nuevo tema`
+  - Las tarjetas de topic deben comunicar identidad visual antes que densidad de datos
+  - La experiencia base debe verse luminosa, optimista y claramente de producto
+  - El formulario ofrece preview de color e icono antes de guardar
+  - La grid degrada correctamente entre movil, tablet y escritorio
+- Archivos o modulos principales afectados:
+  - `src/app/page.tsx`
+  - `src/components/shared/PageHeader.tsx`
+  - `src/components/shared/EmptyState.tsx`
+  - `src/components/shared/ConfirmDialog.tsx`
+  - `src/features/topics/components/TopicForm.tsx`
+  - `src/features/topics/components/TopicCard.tsx`
+  - `src/features/topics/components/TopicGrid.tsx`
+  - `src/features/topics/components/TopicsHomeScreen.tsx`
+  - `src/features/topics/components/topic-ui.constants.tsx`
+  - `docs/features-topics.md`
+  - `docs/screen-home-topics.md`
+  - `docs/ui-product-rules.md`
+- Validaciones realizadas:
+  - `npm run lint` ejecutado correctamente
+  - `npm run build` ejecutado correctamente
+  - Revision de consistencia entre hooks de topics y flujo visual de la home
+- Problemas encontrados:
+  - Se detecto un warning de React Compiler con `watch()` de `react-hook-form` y se corrigio usando `useWatch`
+- Deuda tecnica o pendientes:
+  - Construir la capa persistente de flashcards
+  - Conectar la futura navegacion hacia detalle de tema
+- Recomendacion para la siguiente fase:
+  - Replicar el mismo patron de topics para `flashcards`: repositorio local, servicio, factory, query keys y hooks por `topicId`
+
+## Fase 5. Persistencia local y servicios de Flashcards
+
+- Fecha de cierre: `2026-05-09`
+- Objetivo de la fase: dejar lista la capa de datos de flashcards con consultas por tema y reglas de cascada coherentes con la arquitectura del proyecto.
+- Feature entregada:
+  - Capa completa de datos de flashcards con persistencia local, servicio y hooks de `TanStack Query` por `topicId`
+- Entregables completados:
+  - `LocalStorageFlashcardRepository` implementado
+  - `FlashcardService` implementado
+  - `flashcardService` factory creada
+  - `flashcardQueryKeys` creadas
+  - Hooks `useFlashcardsByTopicQuery`, `useCreateFlashcardMutation`, `useUpdateFlashcardMutation` y `useDeleteFlashcardMutation` creados
+  - Regla de borrado en cascada documentada e integrada en la eliminacion de topics
+  - Documentacion especifica de la feature de flashcards creada
+- Decisiones tecnicas:
+  - La consulta principal de flashcards se concentra en `findByTopicId`
+  - `FlashcardService` valida el input y comprueba existencia del topic antes de crear una tarjeta
+  - La limpieza en cascada se resuelve desde `TopicService` usando `deleteByTopicId`
+  - La mutation de borrado de topic ya limpia tambien la cache de flashcards asociada
+- Reglas de negocio y producto:
+  - No puede existir una flashcard sin tema asociado
+  - No se puede crear una flashcard para un topic inexistente
+  - La coleccion de flashcards debe mantenerse aislada por tema
+  - Borrar un topic debe poder borrar tambien sus tarjetas sin depender de una pantalla concreta
+- Reglas de UI/UX confirmadas:
+  - La futura pantalla de detalle de topic debe renderizar una coleccion perteneciente solo al `topicId` actual
+  - Los mensajes de error deben seguir hablándose en espanol claro
+  - La UI de tarjetas debe tratar el tema como contexto primario, no como campo secundario
+- Archivos o modulos principales afectados:
+  - `src/features/flashcards/repositories/local-storage-flashcard.repository.ts`
+  - `src/features/flashcards/services/flashcard.service.ts`
+  - `src/features/flashcards/services/flashcard-service.factory.ts`
+  - `src/features/flashcards/queries/flashcard.query-keys.ts`
+  - `src/features/flashcards/queries/use-flashcards-by-topic-query.ts`
+  - `src/features/flashcards/queries/use-create-flashcard-mutation.ts`
+  - `src/features/flashcards/queries/use-update-flashcard-mutation.ts`
+  - `src/features/flashcards/queries/use-delete-flashcard-mutation.ts`
+  - `src/features/topics/services/topic.service.ts`
+  - `src/features/topics/services/topic-service.factory.ts`
+  - `src/features/topics/queries/use-delete-topic-mutation.ts`
+  - `docs/features-flashcards.md`
+- Validaciones realizadas:
+  - Verificacion de coherencia entre `topicId`, servicio y repositorio local
+  - Revision de reglas de cascada entre topics y flashcards
+  - `npm run lint` ejecutado correctamente
+  - `npm run build` ejecutado correctamente
+- Problemas encontrados:
+  - Ningun bloqueo funcional en esta fase
+- Deuda tecnica o pendientes:
+  - Implementar la pantalla de detalle de topic y el CRUD visual de flashcards
+- Recomendacion para la siguiente fase:
+  - Reutilizar el patron de la Home de topics para construir `/topics/[topicId]` con modales de crear, editar y borrar flashcards

@@ -2,8 +2,8 @@
 
 ## Estado global
 
-- Fase actual: `Fase 3. Persistencia local y servicios de Topics`
-- Ultima fase cerrada: `Fase 2. Dominio y contratos`
+- Fase actual: `Fase 6. UI de detalle de tema y CRUD de flashcards`
+- Ultima fase cerrada: `Fase 5. Persistencia local y servicios de Flashcards`
 - Ultima actualizacion: `2026-05-09`
 - Regla operativa: al cerrar cada fase se actualiza este archivo y `docs/memora-mvp-progress-log.md`, y despues se pide confirmacion explicita antes de continuar.
 
@@ -89,81 +89,96 @@ Notas:
 ## Fase 3. Persistencia local y servicios de Topics
 
 Implementacion:
-- [ ] Implementar `LocalStorageClient`
-- [ ] Implementar `LocalStorageTopicRepository`
-- [ ] Implementar `TopicService`
-- [ ] Crear `topic-service.factory.ts`
-- [ ] Crear `topic.query-keys.ts`
-- [ ] Crear `useTopicsQuery`
-- [ ] Crear `useTopicQuery`
-- [ ] Crear `useCreateTopicMutation`
-- [ ] Crear `useUpdateTopicMutation`
-- [ ] Crear `useDeleteTopicMutation`
-- [ ] Preparar seed inicial de temas
+- [x] Implementar `LocalStorageClient`
+- [x] Implementar `LocalStorageTopicRepository`
+- [x] Implementar `TopicService`
+- [x] Crear `topic-service.factory.ts`
+- [x] Crear `topic.query-keys.ts`
+- [x] Crear `useTopicsQuery`
+- [x] Crear `useTopicQuery`
+- [x] Crear `useCreateTopicMutation`
+- [x] Crear `useUpdateTopicMutation`
+- [x] Crear `useDeleteTopicMutation`
+- [x] Preparar seed inicial de temas
 
 Documentacion:
-- [ ] Documentar flujo `query -> service -> repository`
-- [ ] Documentar claves versionadas de storage
-- [ ] Documentar decisiones sobre seed inicial
-- [ ] Registrar invalidaciones y limpieza de cache de topics
-- [ ] Documentar errores esperados y manejo de fallbacks
-- [ ] Documentar la feature de topics y sus reglas de negocio y producto
+- [x] Documentar flujo `query -> service -> repository`
+- [x] Documentar claves versionadas de storage
+- [x] Documentar decisiones sobre seed inicial
+- [x] Registrar invalidaciones y limpieza de cache de topics
+- [x] Documentar errores esperados y manejo de fallbacks
+- [x] Documentar la feature de topics y sus reglas de negocio y producto
 
 Cierre de fase:
-- [ ] Verificar CRUD funcional de temas a nivel de datos
-- [ ] Actualizar plan y bitacora
-- [ ] Preguntar al usuario si desea continuar con Fase 4
+- [x] Verificar CRUD funcional de temas a nivel de datos
+- [x] Actualizar plan y bitacora
+- [x] Preguntar al usuario si desea continuar con Fase 4
+
+Notas:
+- La semilla inicial de topics solo se crea si la clave `memora:v1:topics` no existe todavia.
+- Si el usuario deja su lista vacia manualmente, la semilla no reaparece.
+- La UI futura debe consumir exclusivamente los hooks de `src/features/topics/queries/`.
 
 ## Fase 4. UI de Topics y Home
 
 Implementacion:
-- [ ] Crear `PageHeader`
-- [ ] Crear `EmptyState`
-- [ ] Crear `ConfirmDialog`
-- [ ] Crear `TopicForm`
-- [ ] Crear `TopicCard`
-- [ ] Crear `TopicGrid`
-- [ ] Implementar Home `/`
-- [ ] Anadir creacion y edicion de temas con `Dialog`
-- [ ] Anadir borrado con confirmacion
-- [ ] Ajustar responsive y estado vacio
+- [x] Crear `PageHeader`
+- [x] Crear `EmptyState`
+- [x] Crear `ConfirmDialog`
+- [x] Crear `TopicForm`
+- [x] Crear `TopicCard`
+- [x] Crear `TopicGrid`
+- [x] Implementar Home `/`
+- [x] Anadir creacion y edicion de temas con `Dialog`
+- [x] Anadir borrado con confirmacion
+- [x] Ajustar responsive y estado vacio
 
 Documentacion:
-- [ ] Documentar composicion de la Home
-- [ ] Documentar comportamiento de formularios y modales
-- [ ] Registrar decisiones visuales iniciales
-- [ ] Documentar empty states y flujos de usuario principales
-- [ ] Documentar experiencia de producto de la Home y gestion de temas
+- [x] Documentar composicion de la Home
+- [x] Documentar comportamiento de formularios y modales
+- [x] Registrar decisiones visuales iniciales
+- [x] Documentar empty states y flujos de usuario principales
+- [x] Documentar experiencia de producto de la Home y gestion de temas
 
 Cierre de fase:
-- [ ] Verificar CRUD completo de temas desde UI
-- [ ] Actualizar plan y bitacora
-- [ ] Preguntar al usuario si desea continuar con Fase 5
+- [x] Verificar CRUD completo de temas desde UI
+- [x] Actualizar plan y bitacora
+- [x] Preguntar al usuario si desea continuar con Fase 5
+
+Notas:
+- La home ya consume solo hooks de topics y no toca servicios ni storage directamente.
+- Crear y editar topics se resuelve dentro de `Dialog` para no romper el flujo principal.
+- El estado vacio se muestra solo cuando ya no aplica la semilla inicial.
 
 ## Fase 5. Persistencia local y servicios de Flashcards
 
 Implementacion:
-- [ ] Implementar `LocalStorageFlashcardRepository`
-- [ ] Implementar `FlashcardService`
-- [ ] Crear `flashcard-service.factory.ts`
-- [ ] Crear `flashcard.query-keys.ts`
-- [ ] Crear `useFlashcardsByTopicQuery`
-- [ ] Crear `useCreateFlashcardMutation`
-- [ ] Crear `useUpdateFlashcardMutation`
-- [ ] Crear `useDeleteFlashcardMutation`
-- [ ] Implementar borrado por `topicId`
+- [x] Implementar `LocalStorageFlashcardRepository`
+- [x] Implementar `FlashcardService`
+- [x] Crear `flashcard-service.factory.ts`
+- [x] Crear `flashcard.query-keys.ts`
+- [x] Crear `useFlashcardsByTopicQuery`
+- [x] Crear `useCreateFlashcardMutation`
+- [x] Crear `useUpdateFlashcardMutation`
+- [x] Crear `useDeleteFlashcardMutation`
+- [x] Implementar borrado por `topicId`
 
 Documentacion:
-- [ ] Documentar relacion entre tema y tarjetas
-- [ ] Documentar estrategia de consulta por `topicId`
-- [ ] Registrar reglas de borrado en cascada
-- [ ] Documentar comportamiento esperado de cache por coleccion
-- [ ] Documentar la feature de flashcards y sus reglas de negocio y producto
+- [x] Documentar relacion entre tema y tarjetas
+- [x] Documentar estrategia de consulta por `topicId`
+- [x] Registrar reglas de borrado en cascada
+- [x] Documentar comportamiento esperado de cache por coleccion
+- [x] Documentar la feature de flashcards y sus reglas de negocio y producto
 
 Cierre de fase:
-- [ ] Verificar capa de datos de flashcards
-- [ ] Actualizar plan y bitacora
-- [ ] Preguntar al usuario si desea continuar con Fase 6
+- [x] Verificar capa de datos de flashcards
+- [x] Actualizar plan y bitacora
+- [x] Preguntar al usuario si desea continuar con Fase 6
+
+Notas:
+- La consulta principal de flashcards ya queda aislada por `topicId`.
+- La limpieza en cascada de flashcards se dispara desde la capa de servicio de topics, no desde la UI.
+- La futura pantalla de detalle de tema debe consumir exclusivamente los hooks de `src/features/flashcards/queries/`.
 
 ## Fase 6. UI de detalle de tema y CRUD de flashcards
 
