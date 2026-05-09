@@ -26,7 +26,7 @@ export function FlashcardPreview({
         </p>
         <p className="line-clamp-5 text-sm leading-7 text-slate-700">{flashcard.back}</p>
       </CardContent>
-      <CardFooter className="flex flex-wrap gap-3 p-5 pt-0">
+      <CardFooter className="flex flex-wrap gap-3 p-5 pt-4">
         <Button
           type="button"
           variant="outline"
