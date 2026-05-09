@@ -1,65 +1,65 @@
-import Image from "next/image";
+import { BookOpenText, DatabaseZap, Layers3, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <main className="relative flex flex-1 overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(219,234,254,0.95),_rgba(255,255,255,0.98)_42%,_#fff_78%)]">
+      <div className="absolute inset-x-0 top-0 h-64 bg-[linear-gradient(135deg,rgba(14,116,144,0.16),rgba(251,191,36,0.10),rgba(249,115,22,0.12))]" />
+      <section className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center gap-12 px-6 py-16 sm:px-10 lg:px-12">
+        <div className="max-w-3xl space-y-6">
+          <span className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/80 px-3 py-1 text-sm font-medium text-sky-900 shadow-sm backdrop-blur">
+            <Sparkles className="h-4 w-4" />
+            Fase 1 completada: base técnica lista
+          </span>
+          <div className="space-y-4">
+            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
+              Memora arranca con una base preparada para crecer de localStorage a API.
+            </h1>
+            <p className="max-w-2xl text-lg leading-8 text-slate-700">
+              El proyecto ya está configurado con Next.js, Tailwind CSS, shadcn/ui,
+              TanStack Query y la estructura modular definida en el plan técnico.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Button size="lg" className="bg-slate-950 text-white hover:bg-slate-800">
+              Continuar con Fase 2
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-slate-300 bg-white/80 text-slate-800"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              Revisar documentación en docs/
+            </Button>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="grid gap-4 md:grid-cols-3">
+          <article className="rounded-3xl border border-slate-200/80 bg-white/85 p-6 shadow-[0_24px_80px_-40px_rgba(15,23,42,0.45)] backdrop-blur">
+            <Layers3 className="h-8 w-8 text-sky-700" />
+            <h2 className="mt-4 text-xl font-semibold text-slate-950">Arquitectura por capas</h2>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              UI, queries, servicios y repositorios quedan separados desde el primer día.
+            </p>
+          </article>
+
+          <article className="rounded-3xl border border-slate-200/80 bg-white/85 p-6 shadow-[0_24px_80px_-40px_rgba(15,23,42,0.45)] backdrop-blur">
+            <DatabaseZap className="h-8 w-8 text-amber-600" />
+            <h2 className="mt-4 text-xl font-semibold text-slate-950">Persistencia intercambiable</h2>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              La base compartida ya está lista para conectar repositorios locales y, después, API.
+            </p>
+          </article>
+
+          <article className="rounded-3xl border border-slate-200/80 bg-white/85 p-6 shadow-[0_24px_80px_-40px_rgba(15,23,42,0.45)] backdrop-blur">
+            <BookOpenText className="h-8 w-8 text-rose-700" />
+            <h2 className="mt-4 text-xl font-semibold text-slate-950">Documentación viva</h2>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              Cada fase se registrará en `docs/` con checklist, validaciones y pendientes.
+            </p>
+          </article>
         </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }

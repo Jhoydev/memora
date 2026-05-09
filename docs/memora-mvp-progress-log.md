@@ -1,0 +1,98 @@
+# Bitacora de progreso de Memora MVP
+
+## Fase 1. Bootstrap y base tecnica
+
+- Fecha de cierre: `2026-05-09`
+- Objetivo de la fase: dejar el proyecto operativo con la base tecnica comun y el sistema de documentacion incremental.
+- Feature entregada:
+  - Base tecnica inicial de Memora lista para soportar features de producto sin acoplar UI y persistencia
+- Entregables completados:
+  - Proyecto `Next.js` inicializado con `npm`, App Router, `TypeScript` y `src/`
+  - `Tailwind CSS` activo
+  - `shadcn/ui` inicializado
+  - Dependencias base de query, formularios, validacion, iconos y motion instaladas
+  - `QueryClientProvider` integrado en `src/app/providers.tsx`
+  - `queryClient` compartido creado en `src/lib/query/query-client.ts`
+  - Estructura base de `features/`, `components/shared/` y `lib/` creada
+  - `AppError`, `LocalStorageClient`, utilidades de fecha e ID, y `STORAGE_KEYS` creados
+  - Documentacion inicial persistida en `docs/`
+- Decisiones tecnicas:
+  - Se usa `npm` como gestor principal
+  - `shadcn/ui` queda configurado desde Fase 1 con estilo `base-nova`
+  - La home del starter se reemplazo por una portada temporal alineada con Memora
+  - La documentacion de seguimiento vive dentro del repo para que pueda evolucionar junto al codigo
+- Reglas de negocio y producto:
+  - La aplicacion debe poder evolucionar de `localStorage` a API sin reescribir pantallas
+  - La documentacion debe crecer junto con el producto, fase por fase
+  - Cada fase terminada debe detener el flujo y pedir confirmacion antes de continuar
+- Archivos o modulos principales afectados:
+  - `package.json`
+  - `components.json`
+  - `src/app/layout.tsx`
+  - `src/app/providers.tsx`
+  - `src/app/page.tsx`
+  - `src/lib/query/query-client.ts`
+  - `src/lib/errors/app-error.ts`
+  - `src/lib/storage/local-storage.client.ts`
+  - `src/lib/storage/storage-keys.ts`
+  - `docs/memora-mvp-execution-plan.md`
+  - `docs/memora-mvp-progress-log.md`
+- Validaciones realizadas:
+  - Scaffold inicial completado sin errores
+  - Inicializacion de `shadcn/ui` completada
+  - Dependencias base instaladas correctamente
+  - `npm run lint` ejecutado correctamente
+  - `npm run build` ejecutado correctamente
+- Problemas encontrados:
+  - Ningun bloqueo funcional; el scaffold base incluyo archivos starter que hubo que sustituir
+- Deuda tecnica o pendientes:
+  - Empezar la capa de dominio en Fase 2
+- Recomendacion para la siguiente fase:
+  - Avanzar con `StudyTopic`, `Flashcard`, `StudySessionResult` y los schemas Zod para fijar los contratos antes de persistencia real
+
+## Fase 2. Dominio y contratos
+
+- Fecha de cierre: `2026-05-09`
+- Objetivo de la fase: definir el modelo estable del dominio y los contratos de datos antes de implementar persistencia y servicios concretos.
+- Feature entregada:
+  - Modelo base de topics, flashcards y resultados de estudio listo para soportar CRUD y sesiones de estudio
+- Entregables completados:
+  - `StudyTopic` creado en `src/features/topics/domain/topic.types.ts`
+  - `Flashcard` creada en `src/features/flashcards/domain/flashcard.types.ts`
+  - `StudySessionResult` creado en `src/features/study/domain/study.types.ts`
+  - Schemas Zod de topics y flashcards creados con sus tipos inferidos de creacion y actualizacion
+  - Interfaces `TopicRepository` y `FlashcardRepository` creadas con firmas asincronas
+  - Cierre tipado para errores iniciales mediante `APP_ERROR_CODES` y `AppErrorCode`
+- Decisiones tecnicas:
+  - Los tipos de dominio incluyen siempre `id`, `createdAt` y `updatedAt` para mantener consistencia entre implementaciones
+  - Los inputs de actualizacion se modelan como `partial` para alinear formularios y futuras mutaciones PATCH-like
+  - Los contratos de repositorio permanecen asincronos incluso para `localStorage` para facilitar migracion a backend sin cambiar hooks ni componentes
+  - Los codigos de error se mantienen centralizados en la capa compartida en vez de duplicarse por feature
+- Reglas de negocio y producto:
+  - Un tema de estudio siempre debe tener nombre y color
+  - Una flashcard siempre pertenece a un tema mediante `topicId`
+  - Una flashcard siempre debe tener frente y reverso
+  - El resultado de estudio debe distinguir entre tarjetas sabidas y no sabidas
+  - La capa de dominio debe reflejar reglas del producto y no detalles de almacenamiento
+- Archivos o modulos principales afectados:
+  - `src/features/topics/domain/topic.types.ts`
+  - `src/features/topics/domain/topic.schema.ts`
+  - `src/features/topics/repositories/topic.repository.ts`
+  - `src/features/flashcards/domain/flashcard.types.ts`
+  - `src/features/flashcards/domain/flashcard.schema.ts`
+  - `src/features/flashcards/repositories/flashcard.repository.ts`
+  - `src/features/study/domain/study.types.ts`
+  - `src/lib/errors/app-error.ts`
+  - `docs/memora-mvp-execution-plan.md`
+  - `docs/memora-mvp-progress-log.md`
+- Validaciones realizadas:
+  - Revision de coherencia entre tipos de dominio y schemas Zod
+  - Confirmacion de firmas asincronas en los contratos de repositorio
+  - `npm run lint` ejecutado correctamente
+  - `npm run build` ejecutado correctamente
+- Problemas encontrados:
+  - Ningun bloqueo funcional en esta fase
+- Deuda tecnica o pendientes:
+  - Implementar repositorios concretos de topics en la siguiente fase
+- Recomendacion para la siguiente fase:
+  - Avanzar con `LocalStorageTopicRepository`, `TopicService`, query keys y hooks de topics para cerrar la primera feature persistente
