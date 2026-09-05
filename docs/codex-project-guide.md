@@ -10,7 +10,7 @@ Este documento resume la estructura del proyecto, las reglas arquitectonicas y l
   - Entrada App Router, layout global y providers.
 - `src/features/`
   - Cada dominio vive por feature.
-  - `topics/`, `flashcards/`, `study/`
+  - `topics/`, `flashcards/`, `study/`, `lol-draft/`
 - `src/components/`
   - `ui/` para base de `shadcn/ui`
   - `shared/` para componentes compartidos del producto
@@ -44,6 +44,11 @@ Reglas:
   - Dominio, repositorio local, servicio, factory, query keys, hooks por `topicId` y UI del detalle de tema implementados.
 - Study:
   - Servicio puro, hook de sesión y UI de estudio implementados.
+- LoL Draft:
+  - Pool curado local, motor puro de recomendaciones y UI de draft implementados.
+  - El MCP publico de OP.GG se consulta desde un servicio aislado para builds y runas actualizadas; el pool local es su respaldo.
+  - Assets visuales centralizados en `lolAssets` y `dataDragonAssetProvider`; consultar `docs/lol-assets.md` antes de añadir imágenes de League.
+  - El historial personal de rivales está planificado, pero no implementado. Consultar `docs/lol-opponent-history-implementation-plan.md` antes de iniciar ese módulo.
 
 ## Convenciones de implementacion
 

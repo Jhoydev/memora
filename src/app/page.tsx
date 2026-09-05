@@ -1,5 +1,5 @@
-import { TopicsHomeScreen } from "@/features/topics/components/TopicsHomeScreen";
+import { LolDraftScreen } from "@/features/lol-draft/components/LolDraftScreen";
 
 export default function Home() {
-  return <TopicsHomeScreen />;
+  return <LolDraftScreen />;
 }

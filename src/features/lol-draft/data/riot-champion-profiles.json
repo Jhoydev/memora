@@ -1,0 +1,2358 @@
+{
+  "source": "Riot Data Dragon",
+  "version": "16.17.1",
+  "updatedAt": "2026-09-04T21:02:24.996Z",
+  "profiles": {
+    "aatrox": {
+      "dataDragonId": "Aatrox",
+      "riotChampionKey": 266,
+      "name": "Aatrox",
+      "riotTags": [
+        "Fighter"
+      ],
+      "tags": [
+        "ad",
+        "sustain"
+      ]
+    },
+    "ahri": {
+      "dataDragonId": "Ahri",
+      "riotChampionKey": 103,
+      "name": "Ahri",
+      "riotTags": [
+        "Mage",
+        "Assassin"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "akali": {
+      "dataDragonId": "Akali",
+      "riotChampionKey": 84,
+      "name": "Akali",
+      "riotTags": [
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "akshan": {
+      "dataDragonId": "Akshan",
+      "riotChampionKey": 166,
+      "name": "Akshan",
+      "riotTags": [
+        "Marksman",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred",
+        "burst",
+        "dive"
+      ]
+    },
+    "alistar": {
+      "dataDragonId": "Alistar",
+      "riotChampionKey": 12,
+      "name": "Alistar",
+      "riotTags": [
+        "Tank",
+        "Support"
+      ],
+      "tags": [
+        "frontline",
+        "peel"
+      ]
+    },
+    "ambessa": {
+      "dataDragonId": "Ambessa",
+      "riotChampionKey": 799,
+      "name": "Ambessa",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "amumu": {
+      "dataDragonId": "Amumu",
+      "riotChampionKey": 32,
+      "name": "Amumu",
+      "riotTags": [
+        "Tank",
+        "Support"
+      ],
+      "tags": [
+        "frontline",
+        "peel"
+      ]
+    },
+    "anivia": {
+      "dataDragonId": "Anivia",
+      "riotChampionKey": 34,
+      "name": "Anivia",
+      "riotTags": [
+        "Mage"
+      ],
+      "tags": [
+        "ap"
+      ]
+    },
+    "annie": {
+      "dataDragonId": "Annie",
+      "riotChampionKey": 1,
+      "name": "Annie",
+      "riotTags": [
+        "Mage",
+        "Support"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "aphelios": {
+      "dataDragonId": "Aphelios",
+      "riotChampionKey": 523,
+      "name": "Aphelios",
+      "riotTags": [
+        "Marksman"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "ashe": {
+      "dataDragonId": "Ashe",
+      "riotChampionKey": 22,
+      "name": "Ashe",
+      "riotTags": [
+        "Marksman",
+        "Support"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred",
+        "peel"
+      ]
+    },
+    "aurelionsol": {
+      "dataDragonId": "AurelionSol",
+      "riotChampionKey": 136,
+      "name": "Aurelion Sol",
+      "riotTags": [
+        "Mage"
+      ],
+      "tags": [
+        "ap"
+      ]
+    },
+    "aurora": {
+      "dataDragonId": "Aurora",
+      "riotChampionKey": 893,
+      "name": "Aurora",
+      "riotTags": [
+        "Mage",
+        "Assassin"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "azir": {
+      "dataDragonId": "Azir",
+      "riotChampionKey": 268,
+      "name": "Azir",
+      "riotTags": [
+        "Mage",
+        "Marksman"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "bardo": {
+      "dataDragonId": "Bard",
+      "riotChampionKey": 432,
+      "name": "Bardo",
+      "riotTags": [
+        "Support",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "belveth": {
+      "dataDragonId": "Belveth",
+      "riotChampionKey": 200,
+      "name": "Bel'Veth",
+      "riotTags": [
+        "Fighter"
+      ],
+      "tags": [
+        "ad",
+        "sustain"
+      ]
+    },
+    "blitzcrank": {
+      "dataDragonId": "Blitzcrank",
+      "riotChampionKey": 53,
+      "name": "Blitzcrank",
+      "riotTags": [
+        "Tank",
+        "Support"
+      ],
+      "tags": [
+        "frontline",
+        "peel"
+      ]
+    },
+    "brand": {
+      "dataDragonId": "Brand",
+      "riotChampionKey": 63,
+      "name": "Brand",
+      "riotTags": [
+        "Mage",
+        "Support"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "braum": {
+      "dataDragonId": "Braum",
+      "riotChampionKey": 201,
+      "name": "Braum",
+      "riotTags": [
+        "Tank",
+        "Support"
+      ],
+      "tags": [
+        "frontline",
+        "peel"
+      ]
+    },
+    "briar": {
+      "dataDragonId": "Briar",
+      "riotChampionKey": 233,
+      "name": "Briar",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "caitlyn": {
+      "dataDragonId": "Caitlyn",
+      "riotChampionKey": 51,
+      "name": "Caitlyn",
+      "riotTags": [
+        "Marksman"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "camille": {
+      "dataDragonId": "Camille",
+      "riotChampionKey": 164,
+      "name": "Camille",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "cassiopeia": {
+      "dataDragonId": "Cassiopeia",
+      "riotChampionKey": 69,
+      "name": "Cassiopeia",
+      "riotTags": [
+        "Mage"
+      ],
+      "tags": [
+        "ap"
+      ]
+    },
+    "chogath": {
+      "dataDragonId": "Chogath",
+      "riotChampionKey": 31,
+      "name": "Cho'Gath",
+      "riotTags": [
+        "Tank",
+        "Mage"
+      ],
+      "tags": [
+        "frontline",
+        "ap"
+      ]
+    },
+    "corki": {
+      "dataDragonId": "Corki",
+      "riotChampionKey": 42,
+      "name": "Corki",
+      "riotTags": [
+        "Marksman",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "darius": {
+      "dataDragonId": "Darius",
+      "riotChampionKey": 122,
+      "name": "Darius",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "diana": {
+      "dataDragonId": "Diana",
+      "riotChampionKey": 131,
+      "name": "Diana",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "draven": {
+      "dataDragonId": "Draven",
+      "riotChampionKey": 119,
+      "name": "Draven",
+      "riotTags": [
+        "Marksman"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "drmundo": {
+      "dataDragonId": "DrMundo",
+      "riotChampionKey": 36,
+      "name": "Dr. Mundo",
+      "riotTags": [
+        "Tank",
+        "Fighter"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "ekko": {
+      "dataDragonId": "Ekko",
+      "riotChampionKey": 245,
+      "name": "Ekko",
+      "riotTags": [
+        "Assassin",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "elise": {
+      "dataDragonId": "Elise",
+      "riotChampionKey": 60,
+      "name": "Elise",
+      "riotTags": [
+        "Assassin",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "evelynn": {
+      "dataDragonId": "Evelynn",
+      "riotChampionKey": 28,
+      "name": "Evelynn",
+      "riotTags": [
+        "Assassin",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "ezreal": {
+      "dataDragonId": "Ezreal",
+      "riotChampionKey": 81,
+      "name": "Ezreal",
+      "riotTags": [
+        "Marksman",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "fiddlesticks": {
+      "dataDragonId": "Fiddlesticks",
+      "riotChampionKey": 9,
+      "name": "Fiddlesticks",
+      "riotTags": [
+        "Mage",
+        "Support"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "fiora": {
+      "dataDragonId": "Fiora",
+      "riotChampionKey": 114,
+      "name": "Fiora",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "fizz": {
+      "dataDragonId": "Fizz",
+      "riotChampionKey": 105,
+      "name": "Fizz",
+      "riotTags": [
+        "Assassin",
+        "Fighter"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "galio": {
+      "dataDragonId": "Galio",
+      "riotChampionKey": 3,
+      "name": "Galio",
+      "riotTags": [
+        "Tank",
+        "Mage"
+      ],
+      "tags": [
+        "frontline",
+        "ap"
+      ]
+    },
+    "gangplank": {
+      "dataDragonId": "Gangplank",
+      "riotChampionKey": 41,
+      "name": "Gangplank",
+      "riotTags": [
+        "Fighter"
+      ],
+      "tags": [
+        "ad",
+        "sustain"
+      ]
+    },
+    "garen": {
+      "dataDragonId": "Garen",
+      "riotChampionKey": 86,
+      "name": "Garen",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "gnar": {
+      "dataDragonId": "Gnar",
+      "riotChampionKey": 150,
+      "name": "Gnar",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "gragas": {
+      "dataDragonId": "Gragas",
+      "riotChampionKey": 79,
+      "name": "Gragas",
+      "riotTags": [
+        "Fighter",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain"
+      ]
+    },
+    "graves": {
+      "dataDragonId": "Graves",
+      "riotChampionKey": 104,
+      "name": "Graves",
+      "riotTags": [
+        "Marksman"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "gwen": {
+      "dataDragonId": "Gwen",
+      "riotChampionKey": 887,
+      "name": "Gwen",
+      "riotTags": [
+        "Fighter"
+      ],
+      "tags": [
+        "ad",
+        "sustain"
+      ]
+    },
+    "hecarim": {
+      "dataDragonId": "Hecarim",
+      "riotChampionKey": 120,
+      "name": "Hecarim",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "heimerdinger": {
+      "dataDragonId": "Heimerdinger",
+      "riotChampionKey": 74,
+      "name": "Heimerdinger",
+      "riotTags": [
+        "Mage",
+        "Support"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "hwei": {
+      "dataDragonId": "Hwei",
+      "riotChampionKey": 910,
+      "name": "Hwei",
+      "riotTags": [
+        "Mage",
+        "Support"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "illaoi": {
+      "dataDragonId": "Illaoi",
+      "riotChampionKey": 420,
+      "name": "Illaoi",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "irelia": {
+      "dataDragonId": "Irelia",
+      "riotChampionKey": 39,
+      "name": "Irelia",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "ivern": {
+      "dataDragonId": "Ivern",
+      "riotChampionKey": 427,
+      "name": "Ivern",
+      "riotTags": [
+        "Support",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "janna": {
+      "dataDragonId": "Janna",
+      "riotChampionKey": 40,
+      "name": "Janna",
+      "riotTags": [
+        "Support",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "jarvaniv": {
+      "dataDragonId": "JarvanIV",
+      "riotChampionKey": 59,
+      "name": "Jarvan IV",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "jax": {
+      "dataDragonId": "Jax",
+      "riotChampionKey": 24,
+      "name": "Jax",
+      "riotTags": [
+        "Fighter"
+      ],
+      "tags": [
+        "ad",
+        "sustain"
+      ]
+    },
+    "jayce": {
+      "dataDragonId": "Jayce",
+      "riotChampionKey": 126,
+      "name": "Jayce",
+      "riotTags": [
+        "Fighter",
+        "Marksman"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "jhin": {
+      "dataDragonId": "Jhin",
+      "riotChampionKey": 202,
+      "name": "Jhin",
+      "riotTags": [
+        "Marksman",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "jinx": {
+      "dataDragonId": "Jinx",
+      "riotChampionKey": 222,
+      "name": "Jinx",
+      "riotTags": [
+        "Marksman"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "kaisa": {
+      "dataDragonId": "Kaisa",
+      "riotChampionKey": 145,
+      "name": "Kai'Sa",
+      "riotTags": [
+        "Marksman",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "kalista": {
+      "dataDragonId": "Kalista",
+      "riotChampionKey": 429,
+      "name": "Kalista",
+      "riotTags": [
+        "Marksman"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "karma": {
+      "dataDragonId": "Karma",
+      "riotChampionKey": 43,
+      "name": "Karma",
+      "riotTags": [
+        "Mage",
+        "Support"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "karthus": {
+      "dataDragonId": "Karthus",
+      "riotChampionKey": 30,
+      "name": "Karthus",
+      "riotTags": [
+        "Mage"
+      ],
+      "tags": [
+        "ap"
+      ]
+    },
+    "kassadin": {
+      "dataDragonId": "Kassadin",
+      "riotChampionKey": 38,
+      "name": "Kassadin",
+      "riotTags": [
+        "Assassin",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "katarina": {
+      "dataDragonId": "Katarina",
+      "riotChampionKey": 55,
+      "name": "Katarina",
+      "riotTags": [
+        "Assassin",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "kayle": {
+      "dataDragonId": "Kayle",
+      "riotChampionKey": 10,
+      "name": "Kayle",
+      "riotTags": [
+        "Marksman",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "kayn": {
+      "dataDragonId": "Kayn",
+      "riotChampionKey": 141,
+      "name": "Kayn",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "kennen": {
+      "dataDragonId": "Kennen",
+      "riotChampionKey": 85,
+      "name": "Kennen",
+      "riotTags": [
+        "Mage"
+      ],
+      "tags": [
+        "ap"
+      ]
+    },
+    "khazix": {
+      "dataDragonId": "Khazix",
+      "riotChampionKey": 121,
+      "name": "Kha'Zix",
+      "riotTags": [
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "kindred": {
+      "dataDragonId": "Kindred",
+      "riotChampionKey": 203,
+      "name": "Kindred",
+      "riotTags": [
+        "Marksman"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "kled": {
+      "dataDragonId": "Kled",
+      "riotChampionKey": 240,
+      "name": "Kled",
+      "riotTags": [
+        "Fighter"
+      ],
+      "tags": [
+        "ad",
+        "sustain"
+      ]
+    },
+    "kogmaw": {
+      "dataDragonId": "KogMaw",
+      "riotChampionKey": 96,
+      "name": "Kog'Maw",
+      "riotTags": [
+        "Marksman",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "ksante": {
+      "dataDragonId": "KSante",
+      "riotChampionKey": 897,
+      "name": "K'Sante",
+      "riotTags": [
+        "Tank",
+        "Fighter"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "leblanc": {
+      "dataDragonId": "Leblanc",
+      "riotChampionKey": 7,
+      "name": "LeBlanc",
+      "riotTags": [
+        "Assassin",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "leesin": {
+      "dataDragonId": "LeeSin",
+      "riotChampionKey": 64,
+      "name": "Lee Sin",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "leona": {
+      "dataDragonId": "Leona",
+      "riotChampionKey": 89,
+      "name": "Leona",
+      "riotTags": [
+        "Tank",
+        "Support"
+      ],
+      "tags": [
+        "frontline",
+        "peel"
+      ]
+    },
+    "lillia": {
+      "dataDragonId": "Lillia",
+      "riotChampionKey": 876,
+      "name": "Lillia",
+      "riotTags": [
+        "Fighter",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain"
+      ]
+    },
+    "lissandra": {
+      "dataDragonId": "Lissandra",
+      "riotChampionKey": 127,
+      "name": "Lissandra",
+      "riotTags": [
+        "Mage"
+      ],
+      "tags": [
+        "ap"
+      ]
+    },
+    "locke": {
+      "dataDragonId": "Locke",
+      "riotChampionKey": 805,
+      "name": "Locke",
+      "riotTags": [
+        "Assassin",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "lucian": {
+      "dataDragonId": "Lucian",
+      "riotChampionKey": 236,
+      "name": "Lucian",
+      "riotTags": [
+        "Marksman",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred",
+        "burst",
+        "dive"
+      ]
+    },
+    "lulu": {
+      "dataDragonId": "Lulu",
+      "riotChampionKey": 117,
+      "name": "Lulu",
+      "riotTags": [
+        "Support",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "lux": {
+      "dataDragonId": "Lux",
+      "riotChampionKey": 99,
+      "name": "Lux",
+      "riotTags": [
+        "Mage",
+        "Support"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "malphite": {
+      "dataDragonId": "Malphite",
+      "riotChampionKey": 54,
+      "name": "Malphite",
+      "riotTags": [
+        "Tank",
+        "Mage"
+      ],
+      "tags": [
+        "frontline",
+        "ap"
+      ]
+    },
+    "malzahar": {
+      "dataDragonId": "Malzahar",
+      "riotChampionKey": 90,
+      "name": "Malzahar",
+      "riotTags": [
+        "Mage"
+      ],
+      "tags": [
+        "ap"
+      ]
+    },
+    "maokai": {
+      "dataDragonId": "Maokai",
+      "riotChampionKey": 57,
+      "name": "Maokai",
+      "riotTags": [
+        "Tank",
+        "Support"
+      ],
+      "tags": [
+        "frontline",
+        "peel"
+      ]
+    },
+    "maestroyi": {
+      "dataDragonId": "MasterYi",
+      "riotChampionKey": 11,
+      "name": "Maestro Yi",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "mel": {
+      "dataDragonId": "Mel",
+      "riotChampionKey": 800,
+      "name": "Mel",
+      "riotTags": [
+        "Mage",
+        "Support"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "milio": {
+      "dataDragonId": "Milio",
+      "riotChampionKey": 902,
+      "name": "Milio",
+      "riotTags": [
+        "Support",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "missfortune": {
+      "dataDragonId": "MissFortune",
+      "riotChampionKey": 21,
+      "name": "Miss Fortune",
+      "riotTags": [
+        "Marksman",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "wukong": {
+      "dataDragonId": "MonkeyKing",
+      "riotChampionKey": 62,
+      "name": "Wukong",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "mordekaiser": {
+      "dataDragonId": "Mordekaiser",
+      "riotChampionKey": 82,
+      "name": "Mordekaiser",
+      "riotTags": [
+        "Fighter",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain"
+      ]
+    },
+    "morgana": {
+      "dataDragonId": "Morgana",
+      "riotChampionKey": 25,
+      "name": "Morgana",
+      "riotTags": [
+        "Support",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "naafiri": {
+      "dataDragonId": "Naafiri",
+      "riotChampionKey": 950,
+      "name": "Naafiri",
+      "riotTags": [
+        "Assassin",
+        "Fighter"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "nami": {
+      "dataDragonId": "Nami",
+      "riotChampionKey": 267,
+      "name": "Nami",
+      "riotTags": [
+        "Support",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "nasus": {
+      "dataDragonId": "Nasus",
+      "riotChampionKey": 75,
+      "name": "Nasus",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "nautilus": {
+      "dataDragonId": "Nautilus",
+      "riotChampionKey": 111,
+      "name": "Nautilus",
+      "riotTags": [
+        "Tank",
+        "Support"
+      ],
+      "tags": [
+        "frontline",
+        "peel"
+      ]
+    },
+    "neeko": {
+      "dataDragonId": "Neeko",
+      "riotChampionKey": 518,
+      "name": "Neeko",
+      "riotTags": [
+        "Mage",
+        "Support"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "nidalee": {
+      "dataDragonId": "Nidalee",
+      "riotChampionKey": 76,
+      "name": "Nidalee",
+      "riotTags": [
+        "Assassin",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "nilah": {
+      "dataDragonId": "Nilah",
+      "riotChampionKey": 895,
+      "name": "Nilah",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "nocturne": {
+      "dataDragonId": "Nocturne",
+      "riotChampionKey": 56,
+      "name": "Nocturne",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "nunuywillump": {
+      "dataDragonId": "Nunu",
+      "riotChampionKey": 20,
+      "name": "Nunu y Willump",
+      "riotTags": [
+        "Tank",
+        "Mage"
+      ],
+      "tags": [
+        "frontline",
+        "ap"
+      ]
+    },
+    "olaf": {
+      "dataDragonId": "Olaf",
+      "riotChampionKey": 2,
+      "name": "Olaf",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "orianna": {
+      "dataDragonId": "Orianna",
+      "riotChampionKey": 61,
+      "name": "Orianna",
+      "riotTags": [
+        "Mage",
+        "Support"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "ornn": {
+      "dataDragonId": "Ornn",
+      "riotChampionKey": 516,
+      "name": "Ornn",
+      "riotTags": [
+        "Tank"
+      ],
+      "tags": [
+        "frontline"
+      ]
+    },
+    "pantheon": {
+      "dataDragonId": "Pantheon",
+      "riotChampionKey": 80,
+      "name": "Pantheon",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "poppy": {
+      "dataDragonId": "Poppy",
+      "riotChampionKey": 78,
+      "name": "Poppy",
+      "riotTags": [
+        "Tank",
+        "Fighter"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "pyke": {
+      "dataDragonId": "Pyke",
+      "riotChampionKey": 555,
+      "name": "Pyke",
+      "riotTags": [
+        "Support",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "burst",
+        "dive",
+        "peel"
+      ]
+    },
+    "qiyana": {
+      "dataDragonId": "Qiyana",
+      "riotChampionKey": 246,
+      "name": "Qiyana",
+      "riotTags": [
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "quinn": {
+      "dataDragonId": "Quinn",
+      "riotChampionKey": 133,
+      "name": "Quinn",
+      "riotTags": [
+        "Marksman",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred",
+        "burst",
+        "dive"
+      ]
+    },
+    "rakan": {
+      "dataDragonId": "Rakan",
+      "riotChampionKey": 497,
+      "name": "Rakan",
+      "riotTags": [
+        "Support"
+      ],
+      "tags": [
+        "peel"
+      ]
+    },
+    "rammus": {
+      "dataDragonId": "Rammus",
+      "riotChampionKey": 33,
+      "name": "Rammus",
+      "riotTags": [
+        "Tank"
+      ],
+      "tags": [
+        "frontline"
+      ]
+    },
+    "reksai": {
+      "dataDragonId": "RekSai",
+      "riotChampionKey": 421,
+      "name": "Rek'Sai",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "rell": {
+      "dataDragonId": "Rell",
+      "riotChampionKey": 526,
+      "name": "Rell",
+      "riotTags": [
+        "Tank",
+        "Support"
+      ],
+      "tags": [
+        "frontline",
+        "peel"
+      ]
+    },
+    "renataglasc": {
+      "dataDragonId": "Renata",
+      "riotChampionKey": 888,
+      "name": "Renata Glasc",
+      "riotTags": [
+        "Support",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "renekton": {
+      "dataDragonId": "Renekton",
+      "riotChampionKey": 58,
+      "name": "Renekton",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "rengar": {
+      "dataDragonId": "Rengar",
+      "riotChampionKey": 107,
+      "name": "Rengar",
+      "riotTags": [
+        "Assassin",
+        "Fighter"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "riven": {
+      "dataDragonId": "Riven",
+      "riotChampionKey": 92,
+      "name": "Riven",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "rumble": {
+      "dataDragonId": "Rumble",
+      "riotChampionKey": 68,
+      "name": "Rumble",
+      "riotTags": [
+        "Fighter",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain"
+      ]
+    },
+    "ryze": {
+      "dataDragonId": "Ryze",
+      "riotChampionKey": 13,
+      "name": "Ryze",
+      "riotTags": [
+        "Mage"
+      ],
+      "tags": [
+        "ap"
+      ]
+    },
+    "samira": {
+      "dataDragonId": "Samira",
+      "riotChampionKey": 360,
+      "name": "Samira",
+      "riotTags": [
+        "Marksman",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred",
+        "burst",
+        "dive"
+      ]
+    },
+    "sejuani": {
+      "dataDragonId": "Sejuani",
+      "riotChampionKey": 113,
+      "name": "Sejuani",
+      "riotTags": [
+        "Tank"
+      ],
+      "tags": [
+        "frontline"
+      ]
+    },
+    "senna": {
+      "dataDragonId": "Senna",
+      "riotChampionKey": 235,
+      "name": "Senna",
+      "riotTags": [
+        "Support",
+        "Marksman"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred",
+        "peel"
+      ]
+    },
+    "seraphine": {
+      "dataDragonId": "Seraphine",
+      "riotChampionKey": 147,
+      "name": "Seraphine",
+      "riotTags": [
+        "Support",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "sett": {
+      "dataDragonId": "Sett",
+      "riotChampionKey": 875,
+      "name": "Sett",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "shaco": {
+      "dataDragonId": "Shaco",
+      "riotChampionKey": 35,
+      "name": "Shaco",
+      "riotTags": [
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "shen": {
+      "dataDragonId": "Shen",
+      "riotChampionKey": 98,
+      "name": "Shen",
+      "riotTags": [
+        "Tank"
+      ],
+      "tags": [
+        "frontline"
+      ]
+    },
+    "shyvana": {
+      "dataDragonId": "Shyvana",
+      "riotChampionKey": 102,
+      "name": "Shyvana",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "singed": {
+      "dataDragonId": "Singed",
+      "riotChampionKey": 27,
+      "name": "Singed",
+      "riotTags": [
+        "Tank",
+        "Mage"
+      ],
+      "tags": [
+        "frontline",
+        "ap"
+      ]
+    },
+    "sion": {
+      "dataDragonId": "Sion",
+      "riotChampionKey": 14,
+      "name": "Sion",
+      "riotTags": [
+        "Tank",
+        "Fighter"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "sivir": {
+      "dataDragonId": "Sivir",
+      "riotChampionKey": 15,
+      "name": "Sivir",
+      "riotTags": [
+        "Marksman"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "skarner": {
+      "dataDragonId": "Skarner",
+      "riotChampionKey": 72,
+      "name": "Skarner",
+      "riotTags": [
+        "Tank",
+        "Fighter"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "smolder": {
+      "dataDragonId": "Smolder",
+      "riotChampionKey": 901,
+      "name": "Smolder",
+      "riotTags": [
+        "Marksman",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "sona": {
+      "dataDragonId": "Sona",
+      "riotChampionKey": 37,
+      "name": "Sona",
+      "riotTags": [
+        "Support",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "soraka": {
+      "dataDragonId": "Soraka",
+      "riotChampionKey": 16,
+      "name": "Soraka",
+      "riotTags": [
+        "Support",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "swain": {
+      "dataDragonId": "Swain",
+      "riotChampionKey": 50,
+      "name": "Swain",
+      "riotTags": [
+        "Mage",
+        "Support"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "sylas": {
+      "dataDragonId": "Sylas",
+      "riotChampionKey": 517,
+      "name": "Sylas",
+      "riotTags": [
+        "Mage",
+        "Assassin"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "syndra": {
+      "dataDragonId": "Syndra",
+      "riotChampionKey": 134,
+      "name": "Syndra",
+      "riotTags": [
+        "Mage"
+      ],
+      "tags": [
+        "ap"
+      ]
+    },
+    "tahmkench": {
+      "dataDragonId": "TahmKench",
+      "riotChampionKey": 223,
+      "name": "Tahm Kench",
+      "riotTags": [
+        "Tank",
+        "Support"
+      ],
+      "tags": [
+        "frontline",
+        "peel"
+      ]
+    },
+    "taliyah": {
+      "dataDragonId": "Taliyah",
+      "riotChampionKey": 163,
+      "name": "Taliyah",
+      "riotTags": [
+        "Mage",
+        "Support"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "talon": {
+      "dataDragonId": "Talon",
+      "riotChampionKey": 91,
+      "name": "Talon",
+      "riotTags": [
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "taric": {
+      "dataDragonId": "Taric",
+      "riotChampionKey": 44,
+      "name": "Taric",
+      "riotTags": [
+        "Support",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "peel"
+      ]
+    },
+    "teemo": {
+      "dataDragonId": "Teemo",
+      "riotChampionKey": 17,
+      "name": "Teemo",
+      "riotTags": [
+        "Marksman",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "thresh": {
+      "dataDragonId": "Thresh",
+      "riotChampionKey": 412,
+      "name": "Thresh",
+      "riotTags": [
+        "Support",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "peel"
+      ]
+    },
+    "tristana": {
+      "dataDragonId": "Tristana",
+      "riotChampionKey": 18,
+      "name": "Tristana",
+      "riotTags": [
+        "Marksman",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred",
+        "burst",
+        "dive"
+      ]
+    },
+    "trundle": {
+      "dataDragonId": "Trundle",
+      "riotChampionKey": 48,
+      "name": "Trundle",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "tryndamere": {
+      "dataDragonId": "Tryndamere",
+      "riotChampionKey": 23,
+      "name": "Tryndamere",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "twistedfate": {
+      "dataDragonId": "TwistedFate",
+      "riotChampionKey": 4,
+      "name": "Twisted Fate",
+      "riotTags": [
+        "Mage",
+        "Marksman"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "twitch": {
+      "dataDragonId": "Twitch",
+      "riotChampionKey": 29,
+      "name": "Twitch",
+      "riotTags": [
+        "Marksman",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred",
+        "burst",
+        "dive"
+      ]
+    },
+    "udyr": {
+      "dataDragonId": "Udyr",
+      "riotChampionKey": 77,
+      "name": "Udyr",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "urgot": {
+      "dataDragonId": "Urgot",
+      "riotChampionKey": 6,
+      "name": "Urgot",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "varus": {
+      "dataDragonId": "Varus",
+      "riotChampionKey": 110,
+      "name": "Varus",
+      "riotTags": [
+        "Marksman",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "vayne": {
+      "dataDragonId": "Vayne",
+      "riotChampionKey": 67,
+      "name": "Vayne",
+      "riotTags": [
+        "Marksman",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred",
+        "burst",
+        "dive"
+      ]
+    },
+    "veigar": {
+      "dataDragonId": "Veigar",
+      "riotChampionKey": 45,
+      "name": "Veigar",
+      "riotTags": [
+        "Mage"
+      ],
+      "tags": [
+        "ap"
+      ]
+    },
+    "velkoz": {
+      "dataDragonId": "Velkoz",
+      "riotChampionKey": 161,
+      "name": "Vel'Koz",
+      "riotTags": [
+        "Mage",
+        "Support"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "vex": {
+      "dataDragonId": "Vex",
+      "riotChampionKey": 711,
+      "name": "Vex",
+      "riotTags": [
+        "Mage"
+      ],
+      "tags": [
+        "ap"
+      ]
+    },
+    "vi": {
+      "dataDragonId": "Vi",
+      "riotChampionKey": 254,
+      "name": "Vi",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "viego": {
+      "dataDragonId": "Viego",
+      "riotChampionKey": 234,
+      "name": "Viego",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "viktor": {
+      "dataDragonId": "Viktor",
+      "riotChampionKey": 112,
+      "name": "Viktor",
+      "riotTags": [
+        "Mage"
+      ],
+      "tags": [
+        "ap"
+      ]
+    },
+    "vladimir": {
+      "dataDragonId": "Vladimir",
+      "riotChampionKey": 8,
+      "name": "Vladimir",
+      "riotTags": [
+        "Mage",
+        "Fighter"
+      ],
+      "tags": [
+        "ap",
+        "ad",
+        "sustain"
+      ]
+    },
+    "volibear": {
+      "dataDragonId": "Volibear",
+      "riotChampionKey": 106,
+      "name": "Volibear",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "warwick": {
+      "dataDragonId": "Warwick",
+      "riotChampionKey": 19,
+      "name": "Warwick",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "xayah": {
+      "dataDragonId": "Xayah",
+      "riotChampionKey": 498,
+      "name": "Xayah",
+      "riotTags": [
+        "Marksman"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "xerath": {
+      "dataDragonId": "Xerath",
+      "riotChampionKey": 101,
+      "name": "Xerath",
+      "riotTags": [
+        "Mage",
+        "Support"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "xinzhao": {
+      "dataDragonId": "XinZhao",
+      "riotChampionKey": 5,
+      "name": "Xin Zhao",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "yasuo": {
+      "dataDragonId": "Yasuo",
+      "riotChampionKey": 157,
+      "name": "Yasuo",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "yone": {
+      "dataDragonId": "Yone",
+      "riotChampionKey": 777,
+      "name": "Yone",
+      "riotTags": [
+        "Fighter",
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "burst",
+        "dive"
+      ]
+    },
+    "yorick": {
+      "dataDragonId": "Yorick",
+      "riotChampionKey": 83,
+      "name": "Yorick",
+      "riotTags": [
+        "Fighter",
+        "Tank"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "yunara": {
+      "dataDragonId": "Yunara",
+      "riotChampionKey": 804,
+      "name": "Yunara",
+      "riotTags": [
+        "Marksman"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "yuumi": {
+      "dataDragonId": "Yuumi",
+      "riotChampionKey": 350,
+      "name": "Yuumi",
+      "riotTags": [
+        "Support",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "zaahen": {
+      "dataDragonId": "Zaahen",
+      "riotChampionKey": 904,
+      "name": "Zaahen",
+      "riotTags": [
+        "Fighter"
+      ],
+      "tags": [
+        "ad",
+        "sustain"
+      ]
+    },
+    "zac": {
+      "dataDragonId": "Zac",
+      "riotChampionKey": 154,
+      "name": "Zac",
+      "riotTags": [
+        "Tank",
+        "Fighter"
+      ],
+      "tags": [
+        "frontline",
+        "ad",
+        "sustain"
+      ]
+    },
+    "zed": {
+      "dataDragonId": "Zed",
+      "riotChampionKey": 238,
+      "name": "Zed",
+      "riotTags": [
+        "Assassin"
+      ],
+      "tags": [
+        "ad",
+        "burst",
+        "dive"
+      ]
+    },
+    "zeri": {
+      "dataDragonId": "Zeri",
+      "riotChampionKey": 221,
+      "name": "Zeri",
+      "riotTags": [
+        "Marksman"
+      ],
+      "tags": [
+        "ad",
+        "sustain",
+        "tank-shred"
+      ]
+    },
+    "ziggs": {
+      "dataDragonId": "Ziggs",
+      "riotChampionKey": 115,
+      "name": "Ziggs",
+      "riotTags": [
+        "Mage"
+      ],
+      "tags": [
+        "ap"
+      ]
+    },
+    "zilean": {
+      "dataDragonId": "Zilean",
+      "riotChampionKey": 26,
+      "name": "Zilean",
+      "riotTags": [
+        "Support",
+        "Mage"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    },
+    "zoe": {
+      "dataDragonId": "Zoe",
+      "riotChampionKey": 142,
+      "name": "Zoe",
+      "riotTags": [
+        "Mage"
+      ],
+      "tags": [
+        "ap"
+      ]
+    },
+    "zyra": {
+      "dataDragonId": "Zyra",
+      "riotChampionKey": 143,
+      "name": "Zyra",
+      "riotTags": [
+        "Mage",
+        "Support"
+      ],
+      "tags": [
+        "ap",
+        "peel"
+      ]
+    }
+  }
+}

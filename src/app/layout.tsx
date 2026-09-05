@@ -3,8 +3,8 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "Memora",
-  description: "MVP de estudio visual con temas, tarjetas y sesiones guiadas.",
+  title: "DraftLens LoL",
+  description: "Asistente de draft para League of Legends con recomendaciones, builds y runas.",
 };
 
 export default function RootLayout({

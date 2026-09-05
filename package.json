@@ -8,7 +8,13 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "sync:opgg:top": "node scripts/sync-opgg-meta.mjs",
+    "sync:opgg:meta": "node scripts/sync-opgg-meta.mjs",
+    "sync:opgg:pool": "node scripts/sync-opgg-champion-pool.mjs",
+    "sync:opgg:top-champions": "node scripts/sync-opgg-top-champions.mjs",
+    "sync:opgg:all-champions": "node scripts/sync-opgg-all-champions.mjs",
+    "sync:riot:champion-profiles": "node scripts/sync-riot-champion-profiles.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",

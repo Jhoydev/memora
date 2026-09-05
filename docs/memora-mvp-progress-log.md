@@ -1,5 +1,23 @@
 # Bitacora de progreso de Memora MVP
 
+## DraftLens. Assets de Riot Data Dragon
+
+- Fecha de cierre: `2026-09-04`
+- Entregable: sistema centralizado y extensible de assets para campeones, objetos, runas, hechizos y pasivas.
+- Decisiones: `lolAssets` es la API estable consumida por la UI; una route handler interna delega la resolución a `dataDragonAssetProvider`. El provider consulta la versión más reciente de Data Dragon, centraliza `es_ES` y conserva versión/metadata en caché de servidor. Los componentes usan un fallback SVG único para no repetir manejo de errores de imágenes.
+- Reglas de negocio y producto: los campeones pueden llegar desde LCU, OP.GG o datos locales con `id`, `key` o `name`; objetos y runas deben conservar sus IDs cuando estén disponibles. Ninguna pantalla puede construir URLs de Data Dragon ni conocer el parche.
+- Archivos principales: `src/features/lol-draft/domain/lol-assets.types.ts`, `src/features/lol-draft/services/lol-assets.service.ts`, `src/features/lol-draft/services/data-dragon-assets.service.ts`, `src/features/lol-draft/components/LolAssetImage.tsx`, `src/app/api/lol-assets/` y `docs/lol-assets.md`.
+- Validación: `npm run lint`, `npm test` (19 archivos, 46 pruebas) y `npm run build` completados correctamente; las pruebas unitarias cubren normalización, URLs, tipos de asset y caché de versión.
+- Seguimiento: los adaptadores de OP.GG y LCU deben exponer IDs de objeto/runa/hechizo cuando estén disponibles para habilitar sus iconos sin resolver por nombre.
+
+## DraftLens. Meta de OP.GG
+
+- Fecha de cierre: `2026-09-02`
+- Entregable: integración del MCP público de OP.GG para builds y runas del campeón activo en Champion Select.
+- Decisiones: el servidor local consulta solo datos de objetos y runas, mantiene una caché de diez minutos y conserva el pool curado como respuesta inmediata y respaldo ante errores.
+- Validación: la conexión MCP respondió correctamente; una consulta de Illaoi top devolvió build y runas en español. Se añadió una prueba del adaptador y se ejecutaron lint, tests y build.
+- Seguimiento: añadido un snapshot local completo por linea, generado desde `lol_list_lane_meta_champions`, para comparar todos los rivales sin consultas de red en pleno draft.
+
 ## Fase 1. Bootstrap y base tecnica
 
 - Fecha de cierre: `2026-05-09`
@@ -461,3 +479,343 @@
   - La cobertura de formularios y mutations de flashcards puede ampliarse si el producto crece
 - Recomendacion para la siguiente fase:
   - El plan MVP queda cerrado; a partir de aquí conviene decidir entre backend real, E2E o mejoras de producto
+
+## Fase 10. DraftLens LoL
+
+- Fecha de cierre: `2026-09-02`
+- Objetivo de la fase: convertir la entrada principal en un asistente simple de draft de League of Legends, usable desde Mac.
+- Feature entregada:
+  - Draft por lineas para equipo aliado y rival, recomendaciones explicables, builds y runas base.
+- Entregables completados:
+  - Feature aislada en `src/features/lol-draft/` con dominio, datos locales, servicio puro y pantalla cliente.
+  - Motor de recomendacion que valora equilibrio AD/AP, frontline, engage, peel, dive, poke y dano contra tanques.
+  - UI responsive compatible con navegadores modernos de macOS.
+  - Pruebas del motor para priorizacion contra dive y exclusion de campeones bloqueados.
+  - Documento de producto `docs/features-lol-draft.md` y reglas de UX actualizadas.
+- Decisiones tecnicas:
+  - El pool y las builds son datos curados locales para que la primera version no dependa de APIs ni cuentas.
+  - La logica vive en un servicio puro y se puede conectar a datos versionados de parche mas adelante.
+- Deuda tecnica o pendientes:
+  - No hay actualizacion automatica de builds, runas o disponibilidad por parche.
+  - Conviene ampliar el pool y sumar estadisticas reales antes de usarlo como referencia competitiva.
+  - La integracion con League busca la instalacion estandar de macOS; debe ampliarse con deteccion de rutas configurables para otras instalaciones.
+
+### Ajuste posterior: picks rivales sin linea
+
+- Fecha: `2026-09-03`
+- Se amplia el adaptador local del cliente de League para recuperar picks rivales tanto desde `theirTeam` como desde las acciones de pick bloqueadas del draft.
+- Cuando League no comunica una linea rival, la interfaz muestra el campeon como "linea sin confirmar" en lugar de ocultarlo o asignarle un rol incorrecto.
+- Validaciones: `npm test` con `15` archivos y `39` tests, `npm run lint` y `npm run build` correctos.
+- La fase final de League puede eliminar el endpoint de Champion Select antes de abrir la partida. Se conserva el último snapshot válido durante dos minutos con estado "Última composición del draft" para impedir que el tablero se vacíe en esa transición.
+- Durante una partida se conserva el draft hasta cuatro horas y se consulta el Live Client local para mostrar el próximo objeto de la build a partir del oro y el inventario actuales.
+
+### Snapshot de datos OP.GG del champion pool
+
+- Fecha: `2026-09-03`
+- Ejecutado `npm run sync:opgg:pool` para generar `src/features/lol-draft/data/opgg-champion-pool.json`.
+- El snapshot contiene `20` perfiles: `8` de top, `4` de jungla, `4` de ADC y `4` de support, con estadísticas de línea, objetos de inicio, botas, core builds, continuaciones de objetos, runas, counters y sinergias.
+- Los loadouts generados desde OP.GG emparejan siempre los objetos con las runas verificadas para la misma línea; los perfiles locales contra composición rival siguen siendo la prioridad táctica.
+- Mid queda pendiente de poblar cuando se defina su champion pool.
+
+### Dataset completo de top
+
+- Fecha: `2026-09-03`
+- Añadido `npm run sync:opgg:top-champions`, con guardado incremental y reanudable, para sincronizar los `59` tops activos del snapshot de OP.GG.
+- Los tops se reconocen en el tablero y sus matchups directos contra el rival de línea ajustan el fit de los candidatos de top.
+
+### Enriquecimiento canónico de datos League
+
+- Fecha: `2026-09-04`
+- Objetivo: preparar los datos importados para reconciliación entre el cliente de Riot, Data Dragon y snapshots de OP.GG sin retirar los fallbacks legibles existentes.
+- Entregables completados:
+  - Identidad de campeón con `dataDragonId` y clave numérica de Riot.
+  - Referencias estructuradas para objetos, runas, fragmentos y hechizos de invocador.
+  - Conversores de servidor que resuelven nombres de imports contra el catálogo vigente de Data Dragon.
+  - Detalle de campeón con pasiva y metadatos completos de Q/W/E/R.
+  - Inventario Live Client con `itemID` en paralelo a los nombres legacy.
+- Decisiones técnicas:
+  - La migración es aditiva: los campos de texto siguen funcionando para snapshots antiguos hasta que todos los importadores proporcionen IDs.
+  - La normalización se ejecuta en servicios de servidor; componentes y reglas de recomendación no consultan directamente catálogos remotos.
+  - Los IDs de hechizos recomendados se incluyen en el resultado determinista porque corresponden a los identificadores estables publicados por Data Dragon.
+- Validaciones realizadas:
+  - Se amplía la suite de Data Dragon para identidad, pasiva, metadatos de habilidad y referencias canónicas.
+- Riesgos o pendientes:
+  - Los snapshots de OP.GG actuales exponen nombres de objetos y runas, por lo que se enriquecen al importarlos; una sincronización futura debe persistir también los IDs resueltos.
+  - Falta incorporar el contexto de parche, región, rango y fecha de captura como metadatos del snapshot de OP.GG.
+- Recomendación: consumir las referencias canónicas en la próxima versión del sincronizador OP.GG y usar los metadatos de habilidad en una vista de detalle o análisis de matchup.
+
+### Expansión de dataset League por líneas
+
+- Fecha: `2026-09-04`
+- Objetivo: reconocer y permitir seleccionar los campeones activos de todas las líneas, no solo los perfiles curados y el dataset de top.
+- Entregables completados:
+  - Los perfiles del snapshot de OP.GG se materializan para top, jungla, mid, ADC y support.
+  - Los campeones flexibles se deduplican en una sola entidad con múltiples líneas válidas.
+  - Nuevo comando `npm run sync:opgg:all-champions` para importar incrementalmente build, runas, estadísticas y matchups de las parejas campeón/línea faltantes.
+- Decisiones técnicas:
+  - Los datos importados solo añaden detección y selección hasta tener etiquetas tácticas verificadas; el pool personal curado sigue controlando las recomendaciones por defecto.
+  - El sincronizador persiste cada dos consultas para que una caída de red no obligue a reiniciar cientos de importaciones.
+- Riesgos o pendientes:
+  - Las etiquetas tácticas de perfiles importados siguen vacías hasta que se clasifiquen de forma verificable; no se infieren automáticamente a partir de la build.
+- Validación de datos:
+  - Se actualizó el snapshot de meta con `267` entradas de línea y se generó el snapshot detallado deduplicado de campeón/línea para el adaptador de loadouts.
+- Recomendación: incorporar etiquetas tácticas desde una fuente estructurada antes de abrir el recomendador a un pool personal más amplio.
+
+### Fallback de recomendaciones para Mid
+
+- Fecha: `2026-09-04`
+- Problema: Mid tenía un array de pool personal vacío, que el recomendador trataba como restricción absoluta y dejaba la card sin opciones.
+- Decisión: una línea sin pool configurado usa las tres mejores opciones del meta importado y la interfaz lo declara como "meta de la línea"; las líneas con pool personal no cambian su comportamiento.
+- Validación: test de recomendación para un pool vacío añadido al servicio puro.
+
+### Normalización de builds OP.GG
+
+- Fecha: `2026-09-04`
+- Problema: algunas continuaciones de OP.GG repetían un objeto ya incluido en el core, como Malla de espinas para Shen.
+- Decisión: el adaptador deduplica objetos por nombre normalizado y conserva su primer lugar en la secuencia; la UI nunca corrige ni oculta datos por sí sola.
+- Validación: test de una continuación con objeto repetido añadido al parser de loadouts.
+
+### Assets de runas recomendadas
+
+- Fecha: `2026-09-04`
+- Entregable: la card de build muestra iconos de la página principal/secundaria y de cada runa recomendada cuando OP.GG entrega `runeSelection` estructurada.
+- Decisión: los fragmentos permanecen en texto, ya que no son runas del catálogo de Data Dragon. Los perfiles legacy siguen usando el fallback textual sin bloquear la card.
+
+### Flujo de recomendación y pick activo
+
+- Fecha: `2026-09-04`
+- Regla de producto: el pool personal es la fuente principal de candidatos; solo un campeón externo con fit superior puede aparecer como `Meta`.
+- Regla de interacción: una elección manual o una card de recomendación confirma el pick aliado y cambia la aplicación a las recomendaciones de loadout del campeón seleccionado.
+- Resultado: la app separa explícitamente la fase de decidir campeón de la fase de decidir build, runas y summoners, incluidas sus alternativas tácticas.
+
+### Claridad entre fit y score de loadout
+
+- Fecha: `2026-09-04`
+- Problema: la UI etiquetaba como `fit` tanto el encaje del campeón en el draft como el score de alternativas OP.GG, haciendo parecer que valores como 71% y 86% se contradecían.
+- Decisión: el pick muestra `fit de pick`; las builds muestran `score de loadout` y `meta`, con una explicación contextual de ambas métricas.
+
+### Selección manual de loadout
+
+- Fecha: `2026-09-04`
+- Regla de producto: la mejor variante de meta es el valor inicial, no una elección forzosa. La persona usuaria puede seleccionar cualquier loadout táctico disponible.
+- Resultado: la alternativa activa actualiza en la cabecera su build, runas y score asociados, permitiendo priorizar por ejemplo una configuración tanque de Garras frente a una variante AP con Cometa.
+
+### Alternativas de loadout no redundantes
+
+- Fecha: `2026-09-04`
+- Problema: OP.GG podía asignar scores diferentes al core y a una continuación que, tras quitar un objeto repetido, quedaban con la misma build y runas.
+- Decisión: el parser descarta loadouts con la misma firma de build, página de runas y fragmentos. Las cards solo aparecen cuando muestran una alternativa real que se puede elegir.
+
+### Etiqueta de build responsive
+
+- Fecha: `2026-09-04`
+- Ajuste: la etiqueta de la variante activa deja de tener un ancho máximo. Conserva el texto en una sola línea y se recoloca íntegra bajo el título `Build` cuando el panel es estrecho.
+
+### Bans del Champion Select
+
+- Fecha: `2026-09-04`
+- Objetivo: impedir recomendaciones inválidas y aportar contexto de draft al incorporar los bans del cliente local de League.
+- Entregables completados:
+  - El adaptador LCU extrae acciones de tipo `ban`, resuelve sus nombres y distingue bans aliados, rivales y pendientes.
+  - Los bans confirmados se muestran bajo cada tablero y se excluyen del selector manual y del motor de recomendaciones.
+  - Un ban pendiente se informa sin bloquear candidatos hasta que League lo confirma.
+  - Si los bans dejan vacío el pool personal, se muestran tres opciones legales de meta marcadas como `Meta`.
+- Decisiones técnicas:
+  - Los bans solo son un filtro de disponibilidad; no se usan para inferir el rol rival ni la intención táctica del equipo que baneó.
+  - El snapshot conserva los bans junto con los picks durante la transición a partida, igual que la composición final.
+- Validaciones realizadas:
+  - Se añadieron pruebas del filtro de bans y del fallback de meta cuando el pool queda agotado.
+- Riesgos o pendientes:
+  - Los bans de campeones aún no presentes en el catálogo local se muestran por nombre, pero no requieren filtrado adicional porque no pueden ser candidatos del recomendador actual.
+
+### Composición rival sin roles durante el draft
+
+- Fecha: `2026-09-04`
+- Problema: Champion Select puede revelar el campeón rival sin revelar su línea. La interfaz lo listaba fuera del panel de rivales y el motor lo omitía del cálculo.
+- Decisión: los campeones se agrupan dentro del panel rival como composición detectada con `rol oculto`; no se asignan artificialmente a Top, Jungla, Mid, ADC o Support.
+- Regla de producto: esos picks alimentan las señales globales de composición para picks, loadouts y hechizos. El ajuste de matchup de top queda reservado al rival cuya línea haya sido confirmada.
+- Validación: prueba añadida para verificar que un rival sin rol, como Nocturne, cambia la prioridad hacia una respuesta de peel para ADC.
+
+### Tablero rival acorde al Champion Select
+
+- Fecha: `2026-09-04`
+- Problema: la UI reutilizaba las cinco filas de rol del equipo aliado para el rival, dando a entender que League revelaba posiciones enemigas antes de la partida.
+- Decisión: en Champion Select y en el snapshot reciente, Rivales usa una lista no editable en orden de pick con roles ocultos. El adaptador deja de convertir `theirTeam` en un tablero por línea durante esa fase.
+- Regla de producto: la vista rival por posiciones solo se habilita en partida, cuando el Live Client confirma la posición. Hasta entonces, las decisiones usan exclusivamente señales globales de composición.
+
+### Planes de línea condicionales para Top
+
+- Fecha: `2026-09-04`
+- Objetivo: separar la build de composición general de las variantes que dependen del posible rival de línea cuando sus posiciones permanecen ocultas durante Champion Select.
+- Entregables completados:
+  - Nuevo servicio que genera un plan seguro y planes condicionales para cada rival detectado que pueda jugar Top.
+  - Las cards de plan aplican de forma conjunta su build y runas a la recomendación superior.
+  - Malphite ofrece, por ejemplo, su frontline contra AD si Darius puede ir Top y poke AP si Aurora puede ocupar esa línea.
+- Regla de producto: un plan condicional nunca confirma un rol rival. Permite preparar la variante, mientras el plan seguro mantiene una decisión válida hasta que el matchup se revele.
+- Decisión de datos: Darius se incorpora al catálogo táctico de fallback como amenaza AD de sustain y frontline, porque su perfil importado aún no expone etiquetas. Aurora utiliza sus etiquetas existentes de AP, poke, burst y dive.
+
+### Previews visuales en recomendaciones
+
+- Fecha: `2026-09-04`
+- Entregable: las alternativas de loadout y los planes de línea incluyen iconos de sus objetos y, cuando el import contiene referencias estructuradas, de sus runas.
+- Decisión: las cards reutilizan el proveedor interno Data Dragon existente, resolviendo por ID y usando nombre como fallback. No incorporan URLs de assets ni catálogos duplicados en la UI.
+
+### Identificación de iconos en recomendaciones
+
+- Fecha: `2026-09-04`
+- Entregable: los objetos y runas de previews y recomendaciones principales muestran un tooltip con su nombre al pasar el cursor.
+- Accesibilidad: los wrappers de assets reciben texto alternativo específico en lugar de una etiqueta genérica, y el atributo `title` ofrece un fallback nativo para el nombre.
+- Validaciones realizadas:
+  - Pruebas para planes seguro, Darius y Aurora con Malphite, además de la exclusión de campeones que no juegan Top.
+
+### Auditoría y motor explicable de DraftLens
+
+- Fecha: `2026-09-04`
+- Objetivo: corregir los riesgos detectados en la auditoría del ranking de campeones sin sustituir el motor determinista existente.
+- Entregables completados:
+  - El score ahora conserva factores estructurados para fuerza de meta, daño, necesidades, sinergia de composición, condición de victoria, respuesta rival, matchup y redundancia.
+  - Se introdujeron perfiles de daño físico, mágico y verdadero para Camille, Gwen, Sett y K'Sante; el resto mantiene una inferencia conservadora desde `ad` y `ap`.
+  - La composición deriva capacidades de los tags existentes, incluyendo presión lateral, split push, acceso a objetivos, control, daño sostenido y objetivos.
+  - El matchup estadístico de Top queda limitado exclusivamente al rival en `enemyBoard.top` confirmado por el Live Client.
+  - La interfaz diferencia encaje de equipo, draft parcial y draft completo; muestra escala `/100` en lugar de un porcentaje de probabilidad.
+  - El polling del cliente evita solicitudes concurrentes para impedir que una respuesta lenta reemplace un estado posterior.
+- Decisiones técnicas:
+  - No se incorporó una base manual masiva ni ML. Los perfiles importados sin tags permanecen explícitamente incompletos hasta que se enriquezcan con una fuente verificable.
+  - Las sinergias nuevas son de composición, no estadísticas por pareja; se mantienen trazables y testeables.
+- Validaciones realizadas:
+  - Añadidas pruebas para alcance de matchup exclusivo de Top y para los estados de encaje de equipo/draft parcial.
+  - Ejecutados `npm test` con `58` pruebas y `npm run lint` correctamente.
+- Pendientes:
+  - Enriquecer de forma incremental los perfiles tácticos importados y añadir sinergias estadísticas solo tras elegir una fuente versionada por parche.
+
+### Enriquecimiento masivo con Riot Data Dragon
+
+- Fecha: `2026-09-04`
+- Entregable: snapshot versionado de `173` campeones de Riot Data Dragon (`16.17.1`) para enriquecer los perfiles importados de OP.GG.
+- Decisión: se traducen únicamente las clases oficiales amplias a tags prudentes. Los perfiles curados siguen prevaleciendo y ninguna clase genérica inventa engage, split push o counter directo.
+- Resultado: un rival detectado e importado como Darius ya contribuye a las señales globales de frontline, daño AD y sustain, además de conservar su matchup estadístico de Top cuando la línea se confirma.
+
+### Presentación de prioridad de recomendación
+
+- Fecha: `2026-09-04`
+- Problema: la píldora `Encaje de equipo` ocupaba demasiado espacio y hacía que el valor pareciera una métrica técnica o una probabilidad.
+- Decisión: las cards muestran `Prioridad`, el valor `/100` como dato dominante y un contexto compacto de composición o draft debajo.
+- Regla: el indicador mantiene el alcance de información disponible sin competir visualmente con el campeón ni presentar una certeza sobre la partida.
+- Ajuste posterior: el valor conserva el formato porcentual solicitado (`83%`) en lugar de una escala `/100`; `Prioridad` y el contexto siguen aclarando que no es win rate.
+
+### Densidad de runas y summoners
+
+- Fecha: `2026-09-04`
+- Decisión: los iconos con tooltip son la representación principal de runas, objetos y hechizos. Sus nombres se ocultan cuando existe una referencia visual estructurada.
+- Fallback: perfiles legacy sin selección estructurada y fragmentos de runas conservan texto, porque no hay icono canónico suficiente para identificarlos.
+
+### Reorganización de columnas del pick activo
+
+- Fecha: `2026-09-04`
+- Problema: Summoners ocupaba una tercera columna completa aunque solo contiene dos iconos.
+- Decisión: el detalle usa dos columnas equilibradas para Build y Runas; Summoners vive en la cabecera de Runas como información auxiliar compacta.
+- Resultado: más ancho útil para objetos y runas, sin espacio vertical desperdiciado en escritorio ni pérdida de tooltips.
+
+### Coaching en partida y planes adaptativos
+
+- Fecha: `2026-09-04`
+- Objetivo: continuar el análisis después de Champion Select y orientar cómo jugar según ventaja o desventaja observable.
+- Entregables completados:
+  - El Live Client incorpora nivel, CS, KDA, muerte, inventario y posición de todos los jugadores.
+  - El rival directo se resuelve por posición confirmada al comenzar la partida.
+  - Nuevo motor puro que clasifica apertura, línea, transición y macro, con planes agresivos, controlados o defensivos.
+  - Histéresis temporal de cinco puntos para evitar cambios visuales inestables cerca de los umbrales.
+  - La card `Plan en vivo` expone factores concretos, confianza, acciones recomendadas y un riesgo que evitar.
+  - La sincronización reutiliza una sola lectura de `allgamedata` por ciclo.
+- Decisiones técnicas:
+  - Se adoptó un score determinista con factores acotados en vez de una falsa probabilidad de victoria sin modelo calibrado.
+  - El oro rival se representa como valor visible de inventario usando costes totales de Data Dragon y nunca como oro total exacto.
+  - La falta de rival confirmado produce un plan seguro de confianza baja en vez de una asignación especulativa.
+- Validaciones realizadas:
+  - Pruebas de fases, límites de factores, desventaja crítica y fallback sin rival.
+  - `63` pruebas, lint y build de producción ejecutados correctamente.
+- Pendientes:
+  - Añadir historial de eventos para explicar tendencias y cambios bruscos sin convertir el coaching en una predicción opaca.
+
+### Fallback de rol para modo Entrenamiento
+
+- Fecha: `2026-09-04`
+- Problema: Live Client detectaba a Camille pero devolvía su posición vacía en Entrenamiento, impidiendo emparejarla con Darius Top pese a disponer del resto de estadísticas.
+- Decisión: inferir el rol propio solo si queda una única posición aliada libre y el campeón activo es compatible con ella. Los roles confirmados por Ranked siempre prevalecen y nunca se infiere el rol rival.
+- Transparencia: el jugador queda marcado con `roleSource: inferred` y el coaching limita la confianza a estimación parcial.
+- Validación real: en la partida activa se identificó Camille Top contra Darius Top y se recibieron correctamente nivel, CS, KDA y valor de inventario de ambos.
+- Validaciones automáticas: `67` pruebas y lint completados correctamente.
+- Ajuste de UI: el oro disponible se redondea hacia abajo para evitar decimales internos del Live Client.
+
+### Reubicación del asistente en partida
+
+- Fecha: `2026-09-04`
+- Problema: siguiente compra y plan en vivo estaban dentro de la columna de build/runas, alargando toda la fila y dejando un gran vacío en la identidad azul del campeón.
+- Decisión: mover ambas superficies a una banda de ancho completo inmediatamente después del resumen principal y antes de las alternativas de loadout.
+- Jerarquía: la compra inmediata usa el bloque estrecho; el plan adaptativo recibe el ancho principal y mantiene visibles estado, factores y acciones.
+- Responsive: la banda se apila en móvil y usa una proporción aproximada `1/3 + 2/3` desde escritorio.
+
+### Ruta de compra adaptativa en vivo
+
+- Fecha: `2026-09-05`
+- Objetivo: convertir el único `Siguiente objetivo` en una secuencia explicable que cambie con la situación de partida.
+- Entregables completados:
+  - La ruta conserva el loadout seleccionado y marca objetos completos como `Comprado`, `Siguiente` o pendiente.
+  - Las botas mejoradas pueden adelantarse contra daño físico, daño mágico o control; el rival de línea recibe más peso que el resto del equipo.
+  - Una postura defensiva prioriza supervivencia antes del núcleo, mientras una postura agresiva mantiene primero el pico ofensivo.
+  - Cada actualización de inventario y del plan en vivo vuelve a calcular automáticamente el orden restante.
+- Decisiones técnicas:
+  - El motor es puro, determinista y reutiliza los snapshots ya disponibles; no añade otra consulta al cliente.
+  - No se cambia la pareja de build y runas elegida. Los ajustes situacionales se insertan en su ruta de objetos.
+  - El alcance actual se limita a objetos completos y botas mejoradas; componentes, consumibles y backs exactos quedan fuera hasta disponer de un modelo de tienda más completo.
+- Validaciones realizadas:
+  - Pruebas para botas de armadura al ir por detrás contra daño físico, avance tras una compra y conservación del núcleo cuando se juega con ventaja.
+  - Suite completa con `70` pruebas, lint y build de producción ejecutados correctamente.
+  - Se corrigió el contrato TypeScript del rol inferido de Entrenamiento que impedía completar el build de producción.
+- Riesgos o pendientes:
+  - Ampliar el catálogo de respuestas situacionales más allá de botas y modelar componentes por umbrales reales de oro.
+
+### Hipótesis de rival Top y compra por componentes
+
+- Fecha: `2026-09-05`
+- Entregables completados:
+  - En Champion Select, los picks rivales compatibles con Top se pueden marcar como `posible Top` o devolver a `Top sin confirmar`.
+  - La hipótesis recalcula loadout, inicio y plan de línea sin confundirla con una posición detectada por League ni modificar la prioridad global de campeón.
+  - Las importaciones de OP.GG preservan ahora objetos de inicio y botas junto al core de cada loadout.
+  - La ruta viva muestra el inicio, el objeto completo objetivo, el componente prioritario alcanzable y la cadena de componentes procedente de Riot Data Dragon.
+- Decisiones técnicas:
+  - Las recetas se resuelven en servidor desde Data Dragon mediante una API local, con validación del conjunto de objetos solicitado.
+  - La elección de componente prioriza armadura o resistencia mágica al jugar defensivo y componentes de ritmo, como Brillo, cuando el plan no requiere estabilizarse.
+- Validaciones realizadas:
+  - Añadidas pruebas para objetos de inicio de OP.GG y para iniciar Guantelete de hielo con Armadura de tela ante una línea física y defensiva.
+  - Suite completa con `71` pruebas, lint y build de producción ejecutados correctamente.
+
+### Playbook de matchups de línea
+
+- Fecha: `2026-09-05`
+- Objetivo: evitar que el plan en vivo repita una plantilla genérica para rivales tácticamente distintos.
+- Entregables completados:
+  - Playbook reutilizable con fichas específicas para Darius, Aurora, Gnar y Camille, más ajustes por pareja para Malphite y Camille.
+  - Fallback explícito por arquetipo para poke/burst y duelo sostenido cuando un rival aún no tiene ficha individual.
+  - El plan de draft y el coaching en partida muestran el contexto del matchup y usan una acción y riesgo adaptados a postura.
+- Regla de producto:
+  - Una ficha específica no equivale a una predicción: orienta la ventana de intercambio y el riesgo principal. Las estadísticas en vivo continúan determinando si jugar agresivo, controlado o defensivo.
+- Validaciones realizadas:
+  - Suite completa con `73` pruebas, lint y build de producción ejecutados correctamente.
+
+### Prioridades visibles de equipo en partida
+
+- Fecha: `2026-09-05`
+- Objetivo: ayudar a decidir a qué aliado apoyar, qué rival respetar o enfocar y qué respuesta de build considerar durante una partida.
+- Entregables completados:
+  - El coaching identifica el aliado y el enemigo con mayor ventaja visible en el snapshot actual.
+  - Cada prioridad explica nivel, CS, KDA y valor visible de inventario, además de una acción de equipo.
+  - El enemigo prioritario puede proponer resistencia mágica, armadura/vida o un ajuste por daño y control según sus etiquetas tácticas.
+- Decisiones técnicas:
+  - El cálculo pondera nivel, impacto KDA e inventario; el CS tiene peso reducido porque las expectativas económicas cambian por rol.
+  - La salida se llama `ventaja visible`, no poder real ni probabilidad de victoria: no conoce oro sin gastar, visión, enfriamientos o ubicación.
+- Validaciones realizadas:
+  - Añadida prueba de selección de aliado/enemigo y respuesta de build contra una amenaza AP.
+  - Suite completa con `74` pruebas, lint y build de producción ejecutados correctamente.
+- Pendientes:
+  - Incorporar eventos y objetivos confirmados por League cuando el Live Client los exponga de forma estable.
